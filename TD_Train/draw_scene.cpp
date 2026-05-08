@@ -1,4 +1,6 @@
 #include "draw_scene.hpp"
+#include "rails/rails.hpp"
+#include "terrain/terrain.hpp"
 
 /* Paramètres de la caméra */
 	/* Angle entre l'axe des x et la caméra */
@@ -13,26 +15,25 @@
 /* Moteur OpenGL */
 GLBI_Engine myEngine;
 
-GLBI_Convex_2D_Shape ground{3};
-
-/* Initialisation des formes */
+/* Initialisation des formes de la scèene */
 void initScene() {
-	std::vector<float> baseCarre{
-		-10.0,-10.0, 0.0,
-		 10.0,-10.0, 0.0,
-		 10.0, 10.0, 0.0,
-		-10.0, 10.0, 0.0
-	};
-	ground.initShape(baseCarre);
-	ground.changeNature(GL_TRIANGLE_FAN);
+
+	/* Initialisation des rails */
+	initStraightRails();
+	initCurvedRails();
+
+	/* Initialisation du terrain */
+	initTerrain();
 }
 
 /* Dessin de la scène */
 void drawScene() {
 	glPointSize(10.0);
+	
+	drawTerrain();
 
 	myEngine.setFlatColor((245 / 255.f), (164 / 255.f), (66 / 255.f));
-	ground.drawShape();
+	drawStraightRails();
 }
 
 
