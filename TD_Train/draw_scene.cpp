@@ -1,6 +1,7 @@
 #include "draw_scene.hpp"
 #include "rails/rails.hpp"
 #include "terrain/terrain.hpp"
+#include "train/train.hpp"
 
 /* Paramètres de la caméra */
 	/* Angle entre l'axe des x et la caméra */
@@ -30,10 +31,11 @@ void initScene() {
 void drawScene() {
 	glPointSize(10.0);
 	
-	drawTerrain();
-
+	//drawTerrain();
 	myEngine.setFlatColor((245 / 255.f), (164 / 255.f), (66 / 255.f));
 	drawStraightRails();
+	drawTrain();
+
 }
 
 
