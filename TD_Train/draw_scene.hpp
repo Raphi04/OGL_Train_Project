@@ -23,6 +23,9 @@ static const float Z_FAR { 500.f };
 /* Moteur OpenGL */
 extern GLBI_Engine myEngine;
 
+/* Toggle de la grille */
+extern bool showTerrainGrid;
+
 void initScene();
 
 void drawScene();

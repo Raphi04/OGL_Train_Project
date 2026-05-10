@@ -16,6 +16,10 @@ L'appuie de cette touche fermera la fenêtre
 
 L'appuie de cette touche activera ou désactivera la vision fillaire de la scène.
 
+### **[G]** Afficher / Retirer la grille du terrain
+
+L'appuie de cette touche activera ou désactivera l'affichage de la grille du terrain.
+
 ## **Implémentation**
 
 ### Modification du CMakeLists

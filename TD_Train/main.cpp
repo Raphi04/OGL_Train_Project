@@ -54,6 +54,12 @@ void onKey(GLFWwindow* window, int key, int /*scancode*/, int action, int /*mods
 			
 	}
 
+	/* Afficher / Retirer la grille du terrain */
+	if(key == GLFW_KEY_G && action == GLFW_PRESS) {
+		showTerrainGrid = !showTerrainGrid;
+		std::cout << "test";
+	}
+
 	/* [TEMPORAIRE]*/
 	/* Gestion des mouvements de la caméra */
 	if(key == GLFW_KEY_UP) {
