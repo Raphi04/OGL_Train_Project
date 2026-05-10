@@ -1,5 +1,6 @@
 #include "terrain.hpp"
 #include "../draw_scene.hpp"
+#include "../engine/engine.hpp"
 
 GLBI_Convex_2D_Shape terrain{3};
 GLBI_Convex_2D_Shape terrainGrid{3};
@@ -14,6 +15,9 @@ On aurait pu faire sur [-width / 2.f, -height / 2.f] vers [width / 2.f, height /
 On a pris la première option pour simplifier l'algorithme et on fait le décallage avec une translation {-width / 2.f, -height / 2.f, 0.f}
 
 */
+
+/* Toggle de la grille */
+bool showTerrainGrid { false };
 
 void initTerrain() {
 	std::vector<float> terrainShape{
@@ -43,7 +47,7 @@ void initTerrainGrid() {
 	std::vector<float> terrainGridShape{};
 
 	/* Hauteur de la grille par rapport au terrain */
-	float z {1.f}; 
+	float z {0.5f}; 
 
 	/* Lignes verticales */
 	for(int x { 0 }; x < (width / 10) + 1; x++) {

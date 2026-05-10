@@ -16,9 +16,29 @@ L'appuie de cette touche fermera la fenêtre
 
 L'appuie de cette touche activera ou désactivera la vision fillaire de la scène.
 
+---
+
 ### **[G]** Afficher / Retirer la grille du terrain
 
 L'appuie de cette touche activera ou désactivera l'affichage de la grille du terrain.
+
+---
+
+### **[Z]**, **[Q]**, **[S]**, **[D]** Déplacer la caméra _(Orbital, FPS et Roof)_
+
+L'appuie de ces touches permettra de déplacer la caméra dans la scène.
+
+---
+
+### **[R]**, **[T]** Zoomer / Dézoomer _(Orbital et Roof)_
+
+L'appuie de ces touches permettra de zoomer ou de dézoomer la caméra dans la scène.
+
+---
+
+### **[C]** Changer de Caméra _(Orbital, FPS et Roof)_
+
+L'appuie de cette touche permettra de changer la caméra.
 
 ## **Implémentation**
 

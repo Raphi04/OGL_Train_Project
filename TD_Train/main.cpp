@@ -5,6 +5,9 @@
 #include "glad/glad.h"
 #include "tools/shaders.hpp"
 
+#include "engine/engine.hpp"
+#include "terrain/terrain.hpp"
+#include "camera/camera.hpp"
 #include "draw_scene.hpp"
 
 using namespace glbasimac;
@@ -54,37 +57,19 @@ void onKey(GLFWwindow* window, int key, int /*scancode*/, int action, int /*mods
 			
 	}
 
+	/* Changer de caméra */
+	if(key == GLFW_KEY_C && action == GLFW_PRESS) {
+		selectedCamera = (selectedCamera + 1) % 3;
+	}
+
 	/* Afficher / Retirer la grille du terrain */
 	if(key == GLFW_KEY_G && action == GLFW_PRESS) {
 		showTerrainGrid = !showTerrainGrid;
 		std::cout << "test";
 	}
 
-	/* [TEMPORAIRE]*/
 	/* Gestion des mouvements de la caméra */
-	if(key == GLFW_KEY_UP) {
-		angle_phy += 1.0;
-	}
-
-	if(key == GLFW_KEY_DOWN) {
-		angle_phy -= 1.0;
-	}
-
-	if(key == GLFW_KEY_LEFT) {
-		angle_theta += 1.0;
-	}
-
-	if(key == GLFW_KEY_RIGHT) {
-		angle_theta -= 1.0;
-	}
-
-	if(key == GLFW_KEY_R && action == GLFW_PRESS) {
-		dist_zoom = dist_zoom * 0.9;
-	}
-
-	if(key == GLFW_KEY_T && action == GLFW_PRESS) {
-		dist_zoom = dist_zoom * 1.1;
-	}
+	cameraMovement(key, action);
 }
 
 int main(int /*argc*/, char** /*argv*/) {
@@ -139,20 +124,8 @@ int main(int /*argc*/, char** /*argv*/) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glEnable(GL_DEPTH_TEST);
 
-		/* [TEMPORAIRE] */
-		/* Gestion de la caméra orbitale */
-		myEngine.mvMatrixStack.loadIdentity();
-		
-		Vector3D pos_camera =
-			Vector3D(dist_zoom*cos(deg2rad(angle_theta))*cos(deg2rad(angle_phy)),
-			dist_zoom*sin(deg2rad(angle_theta))*cos(deg2rad(angle_phy)),
-			dist_zoom*sin(deg2rad(angle_phy)));
-
-		Vector3D viewed_point = Vector3D(0.0,0.0,0.0);
-		Vector3D up_vector = Vector3D(0.0,0.0,1.0);
-		Matrix4D viewMatrix = Matrix4D::lookAt(pos_camera,viewed_point,up_vector);
-		myEngine.setViewMatrix(viewMatrix);
-		myEngine.updateMvMatrix();
+		/* Gestion de la caméra */
+		cameraSelector();
 
 		/* Dessine notre scene */
 		drawScene();
