@@ -1,12 +1,13 @@
 #include "terrain.hpp"
 #include "../draw_scene.hpp"
 #include "../engine/engine.hpp"
+#include "../sceneComposition/sceneComposition.hpp"
 
 GLBI_Convex_2D_Shape terrain{3};
 GLBI_Convex_2D_Shape terrainGrid{3};
 
-float width { 100 };
-float height { 100 };
+float& width { sceneComposition.terrainWidth };
+float& height { sceneComposition.terrainHeight };
 
 /*
 

@@ -71,7 +71,7 @@ void cameraSelector() {
 	}
 }
 
-void cameraMovement(int key, int action) {
+void cameraMovement(int const& key, int const& action) {
 	switch (key) {
 		// Avancer
 		case GLFW_KEY_W:

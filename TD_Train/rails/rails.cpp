@@ -1,6 +1,7 @@
 #include "rails.hpp"
 #include "../draw_scene.hpp"
 #include "../engine/engine.hpp"
+#include "../sceneComposition/sceneComposition.hpp"
 
 GLBI_Convex_2D_Shape test{3};
 
@@ -29,3 +30,13 @@ void drawStraightRails() {
 }
 
 void drawCurvedRails() {}
+
+void drawCircuit(){
+	myEngine.mvMatrixStack.pushMatrix();
+
+		myEngine.mvMatrixStack.addTranslation({-sceneComposition.terrainWidth / 2, -sceneComposition.terrainHeight / 2, 0.f});
+		myEngine.updateMvMatrix();
+
+	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
+}
