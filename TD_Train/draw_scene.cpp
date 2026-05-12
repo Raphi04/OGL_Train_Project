@@ -25,6 +25,7 @@ void initScene() {
 
 	/* Initialisation du terrain */
 	initTerrain();
+	initTrain();
 }
 
 /* Dessin de la scène */
