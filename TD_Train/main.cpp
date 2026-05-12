@@ -23,7 +23,7 @@ static float aspectRatio = 1.0f;
 static const double FRAMERATE_IN_SECONDS = 1. / 30.;
 
 /* Variable d'état du mode filaire */
-bool isLineMode {};
+bool isLineMode { false };
 
 /* Fonction de gestion des erreurs */
 void onError(int error, const char* description) {
@@ -49,12 +49,12 @@ void onKey(GLFWwindow* window, int key, int /*scancode*/, int action, int /*mods
 
 	/* Passer au mode de visualisation filaire de la scène */
 	if(key == GLFW_KEY_L && action == GLFW_PRESS) {
+		isLineMode = !isLineMode;
 		if(isLineMode) {
 			glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
 		} else {
 			glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
 		}
-			
 	}
 
 	/* Changer de caméra */
