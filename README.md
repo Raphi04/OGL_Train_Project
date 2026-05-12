@@ -73,3 +73,16 @@ file(GLOB EXE_SRC_FILES main.cpp)
 ```
 
 Cela me permet d'avoir un unique fichier **.cpp** reconnue comme executable.
+
+---
+
+Ajout de nohlmann :
+
+```
+# ---Add nlohmann---
+set(ALL_LIBRARIES ${ALL_LIBRARIES} nlohmann)
+include_directories(third_party/)
+set(CMAKE_COLOR_MAKEFILE ON)
+```
+
+Cela permet d'aller chercher le dossier nohlmann dans third_party

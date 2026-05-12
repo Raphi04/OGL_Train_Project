@@ -18,8 +18,8 @@ struct sceneElement {
 
 struct SceneComposition
 {
-    float terrainWidth { 100 };
-    float terrainHeight { 100 };
+    float terrainWidth;
+    float terrainHeight;
 
     std::vector<sceneElement> sceneElements;
 };

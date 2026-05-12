@@ -72,7 +72,18 @@ void onKey(GLFWwindow* window, int key, int /*scancode*/, int action, int /*mods
 	cameraMovement(key, action);
 }
 
-int main(int /*argc*/, char** /*argv*/) {
+int main(int argc, char* argv[]) {
+
+	if(argc < 2 ){
+		std::cout << "Veuillez inclure un json en argument de la commande";
+
+		return 0;
+		
+	} else {
+		initJSONConfig(argv[1]);
+	}
+
+
 	/* Initialisation de GLFW */
 	GLFWwindow* window;
 	if (!glfwInit()) return -1;

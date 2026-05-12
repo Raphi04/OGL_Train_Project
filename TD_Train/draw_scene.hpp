@@ -9,4 +9,3 @@ using namespace glbasimac;
 void initScene();
 
 void drawScene();
-
