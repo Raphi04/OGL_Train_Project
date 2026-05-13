@@ -65,11 +65,17 @@ void onKey(GLFWwindow* window, int key, int /*scancode*/, int action, int /*mods
 	/* Afficher / Retirer la grille du terrain */
 	if(key == GLFW_KEY_G && action == GLFW_PRESS) {
 		showTerrainGrid = !showTerrainGrid;
-		std::cout << "test";
 	}
 
 	/* Gestion des mouvements de la caméra */
 	cameraMovement(key, action);
+}
+
+/* Fonction de callback du mouvement de la souris */
+void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
+	if(selectedCamera == 1) {
+		cameraAim(xpos, ypos);
+	}
 }
 
 int main(int argc, char* argv[]) {
@@ -107,11 +113,15 @@ int main(int argc, char* argv[]) {
 		return -1;
 	}
 
-	// Mise en place des fonctions de callback
-	glfwSetWindowSizeCallback(window,onWindowResized);
+	/* Mise en place des fonctions de callback */
+	glfwSetWindowSizeCallback(window, onWindowResized);
 	glfwSetKeyCallback(window, onKey);
 
-	// Lancement du moteur 3D
+	/* Mise en place de la détéction du mouvement de la souris */
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); 
+	glfwSetCursorPosCallback(window, mouse_callback);   
+
+	/* Lancement du moteur 3D */
 	myEngine.mode2D = false;
 	myEngine.initGL();
 

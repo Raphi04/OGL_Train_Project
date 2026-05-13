@@ -16,3 +16,5 @@ void roofCamera();
 void cameraSelector();
 
 void cameraMovement(int const& key, int const& action);
+
+void cameraAim(double x, double y);
