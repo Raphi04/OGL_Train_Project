@@ -7,4 +7,3 @@ void initCurvedRails();
 void drawStraightRails();
 
 void drawCurvedRails();
-

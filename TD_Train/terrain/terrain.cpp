@@ -62,13 +62,13 @@ void initTerrainGrid() {
 	}
 
 	/* Lignes horizontales */
-	for(int y { -1 }; y < (height / 10); y++) {
+	for(int y { 0 }; y < (height / 10) + 1; y++) {
 		terrainGridShape.push_back(0);
-		terrainGridShape.push_back(y * 10 + 10);
+		terrainGridShape.push_back(y * 10);
 		terrainGridShape.push_back(z);
 
 		terrainGridShape.push_back(width);
-		terrainGridShape.push_back(y * 10 + 10);
+		terrainGridShape.push_back(y * 10);
 		terrainGridShape.push_back(z);
 	}
 

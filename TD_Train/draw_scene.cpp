@@ -37,8 +37,44 @@ void drawScene() {
 		drawTerrainGrid();
 	}
 
-	// myEngine.setFlatColor((245 / 255.f), (164 / 255.f), (66 / 255.f));
-	// drawStraightRails();
+
+	/* Dessin des éléments de la scène */
+	myEngine.mvMatrixStack.pushMatrix();
+
+		myEngine.mvMatrixStack.addTranslation({-sceneComposition.terrainWidth / 2, -sceneComposition.terrainHeight / 2, 0.f});
+		myEngine.updateMvMatrix();
+
+		float translationX {};
+		float translationY {};
+		float rotation {};
+
+		for(SceneElement sceneElement : sceneComposition.sceneElements) {
+			translationX = sceneElement.x * 10;
+			translationY = sceneElement.y * 10;
+			rotation = M_PI * sceneElement.rotation / 180;
+
+			myEngine.mvMatrixStack.pushMatrix();
+
+				myEngine.mvMatrixStack.addTranslation({translationX + 5, translationY + 5, 0.f});
+				myEngine.mvMatrixStack.addRotation(rotation, {0.f, 0.f, 1.f});
+				myEngine.updateMvMatrix();
+
+				if(sceneElement.elementType == Element::StraightRail) {
+					myEngine.setFlatColor(1.f, 1.f, 0.f);
+					drawStraightRails();
+				}
+
+				if(sceneElement.elementType == Element::CurvedRail) {
+					myEngine.setFlatColor(0.f, 1.f, 1.f);
+					drawCurvedRails();
+				}
+
+			myEngine.mvMatrixStack.popMatrix();
+			myEngine.updateMvMatrix();
+		}
+
+	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 }
 
 

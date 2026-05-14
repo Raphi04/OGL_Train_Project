@@ -16,8 +16,10 @@ void initJSONConfig(std::string const& json) {
 
 	nlohmann::json inputJson = nlohmann::json::parse(file);
 
-	sceneComposition.terrainWidth = inputJson.at("size_grid").get<float>();
-	sceneComposition.terrainHeight = inputJson.at("size_grid").get<float>();
+	sceneComposition.terrainWidth = inputJson.at("grid_width").get<float>();
+	sceneComposition.terrainHeight = inputJson.at("grid_height").get<float>();
+
+	getRails(inputJson.at("path").get<std::vector<std::array<int, 2>>>());
 }
 
 void initRepere() {

@@ -36,6 +36,12 @@ L'appuie de ces touches permettra de zoomer ou de dézoomer la caméra dans la s
 
 ---
 
+### **[A]**, **[E]** Descendre / Monter _(FPS)_
+
+L'appuie de ces touches permettra de faire monter ou descendre la caméra dans la scène.
+
+---
+
 ### **[C]** Changer de Caméra _(Orbital, FPS et Roof)_
 
 L'appuie de cette touche permettra de changer la caméra.
@@ -80,7 +86,6 @@ Ajout de nohlmann :
 
 ```
 # ---Add nlohmann---
-set(ALL_LIBRARIES ${ALL_LIBRARIES} nlohmann)
 include_directories(third_party/)
 set(CMAKE_COLOR_MAKEFILE ON)
 ```
