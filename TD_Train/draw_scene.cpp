@@ -14,6 +14,7 @@ void initScene() {
 	/* Initialisation des rails */
 	initStraightRails();
 	initCurvedRails();
+	initRails();
 
 	/* Initialisation du terrain */
 	initTerrain();
@@ -60,7 +61,7 @@ void drawScene() {
 				myEngine.updateMvMatrix();
 
 				if(sceneElement.elementType == Element::StraightRail) {
-					myEngine.setFlatColor(1.f, 1.f, 0.f);
+					myEngine.setFlatColor(0.75f, 0.75f, 0.75f);
 					drawStraightRails();
 				}
 

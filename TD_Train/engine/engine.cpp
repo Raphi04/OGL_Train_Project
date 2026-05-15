@@ -20,6 +20,9 @@ void initJSONConfig(std::string const& json) {
 	sceneComposition.terrainHeight = inputJson.at("grid_height").get<float>();
 
 	getRails(inputJson.at("path").get<std::vector<std::array<int, 2>>>());
+
+	StraightRailParams straightRailParams = inputJson.at("railsParams").get<RailsParams>().straightRailParams;
+	CurvedRailParams curvedRailsParams = inputJson.at("railsParams").get<RailsParams>().curvedRailParams;
 }
 
 void initRepere() {

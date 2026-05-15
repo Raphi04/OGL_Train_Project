@@ -15,7 +15,12 @@ bool checkIfEmpty(int const& x, int const& y) {
 
 bool checkIfCurved(std::array<int, 2> precedentRail, std::array<int, 2> nextRail) {
     if(precedentRail[0] != nextRail[0] && precedentRail[1] != nextRail[1]) {
-        return true;
+        /* On vérifie que le rail d'avant est bien à côter de l'actuel et pas plus loin*/
+        if(abs(precedentRail[0] - nextRail[0]) > 1 || abs(precedentRail[1] - nextRail[1]) > 1) {
+            return  false;
+        } else {
+            return true;
+        }
     } else {
         return false;
     }
@@ -57,18 +62,35 @@ float getCurvedDirection(std::array<int, 2> precedentRail, std::array<int, 2> ne
     return 0.f;
 }
 
-float getStraightDirection(std::array<int, 2> precedentRail, std::array<int, 2> currentRail) {
-    int posDepartX { precedentRail[0] - currentRail[0] };
-    int posDepartY { precedentRail[1] - currentRail[1] };
+float getStraightDirection(std::array<int, 2> precedentRail, std::array<int, 2> currentRail, std::array<int, 2> nextRail) {
 
-    /* Rotation de 0° | Gauche vers Bas ou Bas vers Gauche */
-    if(posDepartY == 1 || posDepartY == -1) {
-        return 0.f;
-    }
+    if(abs(precedentRail[0] - currentRail[0]) <= 1 && abs(precedentRail[1] - currentRail[1]) <= 1) {
+        int posDepartX { precedentRail[0] - currentRail[0] };
+        int posDepartY { precedentRail[1] - currentRail[1] };
 
-    /* Rotation de 90° | Droite vers Bas ou Bas vers Droite */
-    if(posDepartX == 1 || posDepartX == -1) {
-        return 90.f;
+        /* Rotation de 0° */
+        if(posDepartY == 1 || posDepartY == -1) {
+            return 0.f;
+        }
+
+        /* Rotation de 90° */
+        if(posDepartX == 1 || posDepartX == -1) {
+            return 90.f;
+        }
+
+    } else {
+        int posArriveX { nextRail[0] - currentRail[0] };
+        int posArriveY { nextRail[1] - currentRail[1] };
+
+        /* Rotation de 90° */
+        if(posArriveX == 1 || posArriveX == -1) {
+            return 90.f;
+        }
+
+        /* Rotation de 0° */
+        if(posArriveY == 1 || posArriveY == -1) {
+            return 0.f;
+        }
     }
 
     /* Par défaut sur 0° */
@@ -111,7 +133,7 @@ void getRails(std::vector<std::array<int, 2>> const& path ) {
             addedRail.x = path[i][0];
             addedRail.y = path[i][1];
             addedRail.elementType = Element::StraightRail;
-            addedRail.rotation = getStraightDirection(precedentRail, currentRail);
+            addedRail.rotation = getStraightDirection(precedentRail, currentRail, nextRail);
         }
 
         /* Ajout de l'élément à la composition de la scène */

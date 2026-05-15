@@ -48,7 +48,7 @@ void initTerrainGrid() {
 	std::vector<float> terrainGridShape{};
 
 	/* Hauteur de la grille par rapport au terrain */
-	float z {0.5f}; 
+	float z { 0.1f }; 
 
 	/* Lignes verticales */
 	for(int x { 0 }; x < (width / 10) + 1; x++) {

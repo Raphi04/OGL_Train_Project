@@ -3,13 +3,29 @@
   "grid_height": 150,
   "origin": [1, 0],
   "path": [
-    [0, 0],
-    [0, 1],
-    [1, 1],
-    [1, 2],
-    [2, 2],
-    [2, 1],
-    [2, 0],
-    [1, 0]
-  ]
+    [5, 7],
+    [6, 7],
+    [7, 7],
+    [7, 8],
+    [7, 9],
+    [6, 9],
+    [5, 9],
+    [5, 8]
+  ],
+
+  "railsParams": {
+    "straightRailParams": {
+      "rail_size": 0.5,
+      "posRailOne": 3,
+      "posRailTwo": 7,
+
+      "balastRayons": 0.5,
+      "balastX1": 2,
+      "balastX2": 8
+    },
+
+    "curvedRailParams": {
+      "test": 1
+    }
+  }
 }
