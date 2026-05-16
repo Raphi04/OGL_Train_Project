@@ -8,7 +8,7 @@ IndexedMesh* sphere;
 StandardMesh* body;
 GLBI_Convex_2D_Shape disque{3};
 IndexedMesh* cylindre;
-GLBI_Convex_2D_Shape cube{3};
+IndexedMesh* cube;
 
 void initTrain()
 {
@@ -27,8 +27,12 @@ void initTrain()
  	disque.changeNature(GL_TRIANGLE_FAN);
 
 	//CYLINDRE 
-	cylindre=basicCylinder(1.f,1.f,32.f,1.f);
+	cylindre = basicCylinder(1.0f, 1.0f, 32, 1);
 	cylindre-> createVAO();
+
+	//CUBE
+	cube=basicCube(1);
+	cube-> createVAO();
 
 
 
@@ -375,7 +379,14 @@ myEngine.setFlatColor(0.6f, 0.6f, 0.8f);
 	myEngine.mvMatrixStack.popMatrix();
 
 	//PAVE DROIT 
-
+	myEngine.setFlatColor(1.f, 1.f, 0.20f);
+	myEngine.mvMatrixStack.pushMatrix();
+	myEngine.mvMatrixStack.addTranslation({0.f,-8.f,-17.f});
+	myEngine.mvMatrixStack.addRotation(-M_PI/2-M_PI/16,{1,0,0});
+	myEngine.mvMatrixStack.addHomothety({30.f,10.f,50.f});
+	myEngine.updateMvMatrix();
+	cube->draw();
+	myEngine.mvMatrixStack.popMatrix();
 	
 
 	
