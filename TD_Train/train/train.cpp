@@ -10,6 +10,19 @@ GLBI_Convex_2D_Shape disque{3};
 IndexedMesh* cylindre;
 IndexedMesh* cube;
 
+
+
+void drawCurvedCylinder() {
+	myEngine.mvMatrixStack.pushMatrix();
+		myEngine.mvMatrixStack.addTranslation({-5.f, -5.f, 0.f});
+		myEngine.updateMvMatrix();
+
+	
+
+	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
+}
+
 void initTrain()
 {
     body = basicCone(10.0f, 4.0f, 2.50f, 50);
@@ -33,6 +46,7 @@ void initTrain()
 	//CUBE
 	cube=basicCube(1);
 	cube-> createVAO();
+
 
 
 
@@ -381,13 +395,25 @@ myEngine.setFlatColor(0.6f, 0.6f, 0.8f);
 	//PAVE DROIT 
 	myEngine.setFlatColor(1.f, 1.f, 0.20f);
 	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,-8.f,-17.f});
+	myEngine.mvMatrixStack.addTranslation({0.f,-8.f,-15.f});
 	myEngine.mvMatrixStack.addRotation(-M_PI/2-M_PI/16,{1,0,0});
 	myEngine.mvMatrixStack.addHomothety({30.f,10.f,50.f});
 	myEngine.updateMvMatrix();
 	cube->draw();
 	myEngine.mvMatrixStack.popMatrix();
 	
+	//SOL DU WAGON
+	myEngine.setFlatColor(1.f, 1.f, 0.20f);
+	myEngine.mvMatrixStack.pushMatrix();
+	myEngine.mvMatrixStack.addTranslation({0.f,-25.f,-17.f});
+	myEngine.mvMatrixStack.addRotation(-M_PI,{1,0,0});
+	myEngine.mvMatrixStack.addHomothety({30.f,5.f,30.f});
+	myEngine.updateMvMatrix();
+	cube->draw();
+	myEngine.mvMatrixStack.popMatrix();
+
+
+	drawCurvedCylinder();
 
 	
 
