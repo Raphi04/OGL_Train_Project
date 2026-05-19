@@ -6,14 +6,14 @@
 int selectedCamera { 0 };
 
 /* Paramètres de la caméra Orbital */
-	/* Angle entre l'axe des x et la caméra */
-	float angle_theta { 45.0 };
+	/* Angle entre l'axe des X et la caméra */
+	float angle_theta { 270.0 };
 
 	/* Angle entre l'axe des Z et la caméra */
 	float angle_phy { 30.0 };
 
 	/* Distance entre le point d'origine de la scène et la caméra */
-	float dist_zoom { 30.0 };
+	float dist_zoom { 15.0 };
 
 void orbitalCamera() {
 	myEngine.mvMatrixStack.loadIdentity();

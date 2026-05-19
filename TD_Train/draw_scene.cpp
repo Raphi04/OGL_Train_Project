@@ -12,9 +12,9 @@ void initScene() {
 	initRepere();
 
 	/* Initialisation des rails */
-	initStraightRails();
 	initCurvedRails();
-	initRails();
+	initStraightRails();
+	initBalast();
 
 	/* Initialisation du terrain */
 	initTerrain();
@@ -61,12 +61,10 @@ void drawScene() {
 				myEngine.updateMvMatrix();
 
 				if(sceneElement.elementType == Element::StraightRail) {
-					myEngine.setFlatColor(0.75f, 0.75f, 0.75f);
 					drawStraightRails();
 				}
 
 				if(sceneElement.elementType == Element::CurvedRail) {
-					myEngine.setFlatColor(0.f, 1.f, 1.f);
 					drawCurvedRails();
 				}
 

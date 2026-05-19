@@ -21,8 +21,7 @@ void initJSONConfig(std::string const& json) {
 
 	getRails(inputJson.at("path").get<std::vector<std::array<int, 2>>>());
 
-	StraightRailParams straightRailParams = inputJson.at("railsParams").get<RailsParams>().straightRailParams;
-	CurvedRailParams curvedRailsParams = inputJson.at("railsParams").get<RailsParams>().curvedRailParams;
+	railParams = inputJson.at("railsParams").get<RailsParams>();
 }
 
 void initRepere() {

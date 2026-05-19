@@ -8,14 +8,11 @@
 
 using namespace glbasimac;
 
-extern StraightRailParams straightRailParams;
-extern CurvedRailParams curvedRailsParams;
-
-void initStraightRails();
+extern RailsParams railParams;
 
 void initCurvedRails();
 
-void initRails();
+void initStraightRails();
 
 void initBalast();
 
