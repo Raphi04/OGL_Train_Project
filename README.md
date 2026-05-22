@@ -16,6 +16,36 @@ L'appuie de cette touche fermera la fenêtre
 
 L'appuie de cette touche activera ou désactivera la vision fillaire de la scène.
 
+---
+
+### **[G]** Afficher / Retirer la grille du terrain
+
+L'appuie de cette touche activera ou désactivera l'affichage de la grille du terrain.
+
+---
+
+### **[Z]**, **[Q]**, **[S]**, **[D]** Déplacer la caméra _(Orbital, FPS et Roof)_
+
+L'appuie de ces touches permettra de déplacer la caméra dans la scène.
+
+---
+
+### **[R]**, **[T]** Zoomer / Dézoomer _(Orbital et Roof)_
+
+L'appuie de ces touches permettra de zoomer ou de dézoomer la caméra dans la scène.
+
+---
+
+### **[A]**, **[E]** Descendre / Monter _(FPS)_
+
+L'appuie de ces touches permettra de faire monter ou descendre la caméra dans la scène.
+
+---
+
+### **[C]** Changer de Caméra _(Orbital, FPS et Roof)_
+
+L'appuie de cette touche permettra de changer la caméra.
+
 ## **Implémentation**
 
 ### Modification du CMakeLists
@@ -49,3 +79,15 @@ file(GLOB EXE_SRC_FILES main.cpp)
 ```
 
 Cela me permet d'avoir un unique fichier **.cpp** reconnue comme executable.
+
+---
+
+Ajout de nohlmann :
+
+```
+# ---Add nlohmann---
+include_directories(third_party/)
+set(CMAKE_COLOR_MAKEFILE ON)
+```
+
+Cela permet d'aller chercher le dossier nohlmann dans third_party

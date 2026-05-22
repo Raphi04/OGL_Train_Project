@@ -33,6 +33,10 @@ set(ALL_LIBRARIES ${ALL_LIBRARIES} glbasimac)
 include_directories(third_party/glbasimac/)
 set(CMAKE_COLOR_MAKEFILE ON)
 
+# ---Add nlohmann---
+include_directories(third_party/)
+set(CMAKE_COLOR_MAKEFILE ON)
+
 file(GLOB TD_DIRECTORIES "TD*")
 
 foreach(TD ${TD_DIRECTORIES})

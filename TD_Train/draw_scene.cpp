@@ -1,30 +1,26 @@
 #include "draw_scene.hpp"
+
+#include "engine/engine.hpp"
+
 #include "rails/rails.hpp"
 #include "terrain/terrain.hpp"
-#include "train/train.hpp"
-
-/* Paramètres de la caméra */
-	/* Angle entre l'axe des x et la caméra */
-	float angle_theta { 45.0 };
-
-	/* Angle entre l'axe des Z et la caméra */
-	float angle_phy { 30.0 };
-
-	/* Distance entre le point d'origine de la scène et la caméra */
-	float dist_zoom { 30.0 };
-
-/* Moteur OpenGL */
-GLBI_Engine myEngine;
 
 /* Initialisation des formes de la scèene */
 void initScene() {
 
+	/* Initialisation du repère*/
+	initRepere();
+
 	/* Initialisation des rails */
-	initStraightRails();
 	initCurvedRails();
+	initStraightRails();
+	initBalast();
 
 	/* Initialisation du terrain */
 	initTerrain();
+
+	/* Initialisation de la grille du terrain */
+	initTerrainGrid();
 	initTrain();
 }
 
@@ -32,11 +28,53 @@ void initScene() {
 void drawScene() {
 	glPointSize(10.0);
 	
-	//drawTerrain();
-	myEngine.setFlatColor((245 / 255.f), (164 / 255.f), (66 / 255.f));
-	drawStraightRails();
-	drawTrain();
+	/* Dessin du repère 3D */
+	drawRepere();
 
+	/* Dessin de terrain */
+	drawTerrain();
+
+	/* Dessin de la grille du terrain*/
+	if(showTerrainGrid) {
+		drawTerrainGrid();
+	}
+
+
+	/* Dessin des éléments de la scène */
+	myEngine.mvMatrixStack.pushMatrix();
+
+		myEngine.mvMatrixStack.addTranslation({-sceneComposition.terrainWidth / 2, -sceneComposition.terrainHeight / 2, 0.f});
+		myEngine.updateMvMatrix();
+
+		float translationX {};
+		float translationY {};
+		float rotation {};
+
+		for(SceneElement sceneElement : sceneComposition.sceneElements) {
+			translationX = sceneElement.x * 10;
+			translationY = sceneElement.y * 10;
+			rotation = M_PI * sceneElement.rotation / 180;
+
+			myEngine.mvMatrixStack.pushMatrix();
+
+				myEngine.mvMatrixStack.addTranslation({translationX + 5, translationY + 5, 0.f});
+				myEngine.mvMatrixStack.addRotation(rotation, {0.f, 0.f, 1.f});
+				myEngine.updateMvMatrix();
+
+				if(sceneElement.elementType == Element::StraightRail) {
+					drawStraightRails();
+				}
+
+				if(sceneElement.elementType == Element::CurvedRail) {
+					drawCurvedRails();
+				}
+
+			myEngine.mvMatrixStack.popMatrix();
+			myEngine.updateMvMatrix();
+		}
+
+	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 }
 
 
