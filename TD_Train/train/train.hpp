@@ -1,3 +1,6 @@
+ #pragma once
+
+
 #include "glbasimac/glbi_engine.hpp"
 #include "glbasimac/glbi_set_of_points.hpp"
 #include "glbasimac/glbi_convex_2D_shape.hpp"
@@ -8,8 +11,8 @@
 #include "glad/glad.h"
 #include "tools/shaders.hpp"
 #include <iostream>
-#include "engine.hpp"
- #pragma once
+
+ #include "../engine/engine.hpp"
  void initTrain();
 
  void drawTrain();

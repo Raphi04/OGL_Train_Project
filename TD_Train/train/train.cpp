@@ -11,7 +11,7 @@ IndexedMesh* cube;
 
 
 
-void drawCurvedCylinder() {
+void drawCurvedCylinder2() {
 	myEngine.mvMatrixStack.pushMatrix();
 		myEngine.mvMatrixStack.addTranslation({-5.f, -5.f, 0.f});
 		myEngine.updateMvMatrix();
@@ -412,7 +412,7 @@ myEngine.setFlatColor(0.6f, 0.6f, 0.8f);
 	myEngine.mvMatrixStack.popMatrix();
 
 
-	drawCurvedCylinder();
+	drawCurvedCylinder2();
 
 	
 
