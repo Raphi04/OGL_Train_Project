@@ -34,6 +34,7 @@ void drawScene() {
 
 	/* Dessin de terrain */
 	drawTerrain();
+	drawTrain();
 	
 
 	/* Dessin de la grille du terrain*/

@@ -61,16 +61,21 @@ void drawTrain()
 	myEngine.mvMatrixStack.addHomothety({1.f,1.f,1.f});
 	myEngine.updateMvMatrix();
 	body->draw();
+
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
 	//CYLINDRE AVANT 
 	myEngine.mvMatrixStack.pushMatrix();
+
 	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
 	myEngine.mvMatrixStack.addRotation(-M_PI-M_PI/16,{1,0,0});
 	myEngine.mvMatrixStack.addHomothety({4.5f,2.f,4.5f});
 	myEngine.updateMvMatrix();
 	cylindre->draw();
+
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
 	//DISQUE PR FERMER CYL
 	myEngine.mvMatrixStack.pushMatrix();
@@ -78,11 +83,14 @@ void drawTrain()
 	myEngine.mvMatrixStack.addRotation(M_PI/2-M_PI/16,{1,0,0});
 	myEngine.mvMatrixStack.addHomothety({4.5f,4.5f,4.5f});
 	myEngine.updateMvMatrix();
+
 	disque.drawShape();
+
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
 //PETIT TRUC SUR LE DEVANT AU DESSUS HORIZONTALE
-	 myEngine.setFlatColor(0.f, 0.81f, 0.20f);
+	myEngine.setFlatColor(0.f, 0.81f, 0.20f);
 	myEngine.mvMatrixStack.pushMatrix();
 	myEngine.mvMatrixStack.addTranslation({0.f,-1.f,8.f});
 	myEngine.mvMatrixStack.addHomothety({0.4f,0.4f,0.4f});
@@ -94,9 +102,11 @@ void drawTrain()
 	myEngine.mvMatrixStack.addHomothety({1.f,1.f,1.f});
 	myEngine.updateMvMatrix();
 	body->draw();
-	myEngine.mvMatrixStack.popMatrix();
 
-	//CYLINDRE AVANT 
+	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
+
+	//Ccylidnre avant 
 	myEngine.mvMatrixStack.pushMatrix();
 	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
 	myEngine.mvMatrixStack.addRotation(-M_PI-M_PI/16,{1,0,0});
@@ -104,8 +114,9 @@ void drawTrain()
 	myEngine.updateMvMatrix();
 	cylindre->draw();
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
-	//DISQUE PR FERMER CYL
+	//Disque pr fermer cylindre
 	myEngine.mvMatrixStack.pushMatrix();
 	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
 	myEngine.mvMatrixStack.addRotation(M_PI/2-M_PI/16,{1,0,0});
@@ -113,10 +124,12 @@ void drawTrain()
 	myEngine.updateMvMatrix();
 	disque.drawShape();
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
-//PETIT TRUC SUR LE DEVANT AU DESSUS VERTICALE
+// //PETIT TRUC SUR LE DEVANT AU DESSUS VERTICALE
 
 	myEngine.setFlatColor(1.f, 0.f, 0.20f);
 	myEngine.mvMatrixStack.pushMatrix();
@@ -131,7 +144,9 @@ void drawTrain()
 	myEngine.mvMatrixStack.addHomothety({1.f,1.f,1.f});
 	myEngine.updateMvMatrix();
 	body->draw();
+
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
 	//CYLINDRE AVANT 
 	myEngine.mvMatrixStack.pushMatrix();
@@ -141,6 +156,7 @@ void drawTrain()
 	myEngine.updateMvMatrix();
 	cylindre->draw();
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
 	//DISQUE PR FERMER CYL
 	myEngine.mvMatrixStack.pushMatrix();
@@ -150,10 +166,12 @@ void drawTrain()
 	myEngine.updateMvMatrix();
 	disque.drawShape();
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
-//2EME ELEMENT VERTICAL AU DESSUS DU TRAIN 
+// //2EME ELEMENT VERTICAL AU DESSUS DU TRAIN 
 	
 	myEngine.setFlatColor(1.f, 0.f, 0.20f);
 	myEngine.mvMatrixStack.pushMatrix();
@@ -168,7 +186,9 @@ void drawTrain()
 	myEngine.mvMatrixStack.addHomothety({1.f,1.f,1.f});
 	myEngine.updateMvMatrix();
 	body->draw();
+
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
 	//cylindre avant
 	myEngine.mvMatrixStack.pushMatrix();
@@ -177,7 +197,9 @@ void drawTrain()
 	myEngine.mvMatrixStack.addHomothety({4.5f,2.f,4.5f});
 	myEngine.updateMvMatrix();
 	cylindre->draw();
+
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
 	//disque pr fermer cylindre
 	myEngine.mvMatrixStack.pushMatrix();
@@ -187,232 +209,271 @@ void drawTrain()
 	myEngine.updateMvMatrix();
 	disque.drawShape();
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
-//anneau
+	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
+
+// //anneau
 myEngine.setFlatColor(0.6f, 0.6f, 0.8f);
 	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,8.f,8.5f});
-	myEngine.mvMatrixStack.addRotation(-M_PI,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({0.7f,0.7f,0.7f});
+	myEngine.mvMatrixStack.addTranslation({0.f,6.f,9.f});
+	myEngine.mvMatrixStack.addRotation(-M_PI/2,{1,0,0});
+	myEngine.mvMatrixStack.addHomothety({0.8f,0.8f,0.8f});
+	
 
 	//cylindre
 	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
 	myEngine.mvMatrixStack.addRotation(-M_PI-M_PI/16,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({4.5f,2.f,4.5f});
 	myEngine.updateMvMatrix();
 	cylindre->draw();
+
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
 	//disque pr fermer cylindre
 	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
+	//myEngine.mvMatrixStack.addTranslation({0.f,-1.f,0.f});
 	myEngine.mvMatrixStack.addRotation(M_PI/2-M_PI/16,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({4.5f,4.5f,4.5f});
 	myEngine.updateMvMatrix();
 	disque.drawShape();
-	myEngine.mvMatrixStack.popMatrix();
 
-	//petit cone 1
+	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
+
+
+
+// 	//petit cone 1
 
 	myEngine.setFlatColor(0.6f, 0.6f, 0.20f);
 
 
 	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.0f,0.f,6.f});
+	//myEngine.mvMatrixStack.addTranslation({0.0f,-0.5f,0.f});
 	myEngine.mvMatrixStack.addRotation(-M_PI/16+M_PI,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({0.5f,0.5f,1.f});
+	myEngine.mvMatrixStack.addHomothety({0.2f,0.1f,0.2f});
 	myEngine.updateMvMatrix();
 	body->draw();
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
+	
+
+	
 
 	//petit cone 2 inversé
 	myEngine.setFlatColor(0.6f, 0.6f, 0.6f);
 
 	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.0f,-7.f,8.f});
+	myEngine.mvMatrixStack.addTranslation({0.0f,-1.8f,0.2f});
 	myEngine.mvMatrixStack.addRotation(-M_PI/16,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({1.f,1.f,1.f});
+	myEngine.mvMatrixStack.addHomothety({0.1f,0.1f,0.1f});
 	myEngine.updateMvMatrix();
 	body->draw();
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
 
 
 // ROUES GAUCHE COTE DROIT (quand face au train)
 
 	myEngine.setFlatColor(1.f, 0.f, 0.20f);
-	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({15.f,-25.f,-6.f});
-	myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
-	myEngine.mvMatrixStack.addHomothety({2.f,2.f,2.f});
+	 myEngine.mvMatrixStack.pushMatrix();
+	 myEngine.mvMatrixStack.addHomothety({1.f,1.5f,1.5f});
 
 	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
-	myEngine.mvMatrixStack.addRotation(-M_PI-M_PI/16,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({4.5f,2.f,4.5f});
+	myEngine.mvMatrixStack.addTranslation({3.f,3.f,1.f});
+	myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
 	myEngine.updateMvMatrix();
 	cylindre->draw();
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
+
 
 	//DISQUE PR FERMER CYL
 	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
-	myEngine.mvMatrixStack.addRotation(M_PI/2-M_PI/16,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({4.5f,4.5f,4.5f});
+	myEngine.mvMatrixStack.addTranslation({3.f,3.f,1.f});
+	myEngine.mvMatrixStack.addRotation(M_PI/2,{0,1,0});
 	myEngine.updateMvMatrix();
 	disque.drawShape();
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
 	//2 ème disque pr fermer
 	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,-2.f,6.5f});
-	myEngine.mvMatrixStack.addRotation(M_PI/2-M_PI/16,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({4.5f,4.5f,4.5f});
+	myEngine.mvMatrixStack.addTranslation({2.f,3.f,1.f});
+	myEngine.mvMatrixStack.addRotation(M_PI/2,{0,1,0});
 	myEngine.updateMvMatrix();
 	disque.drawShape();
-	myEngine.mvMatrixStack.popMatrix();
 
 	myEngine.mvMatrixStack.popMatrix();
-
-
-	// ROUES DROITE COTE DROIT (quand face au train)
-
-	myEngine.setFlatColor(1.f, 0.f, 0.20f);
-	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({15.f,-25.f,-25.f});
-	myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
-	myEngine.mvMatrixStack.addHomothety({2.f,2.f,2.f});
-
-	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
-	myEngine.mvMatrixStack.addRotation(-M_PI-M_PI/16,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({4.5f,2.f,4.5f});
 	myEngine.updateMvMatrix();
-	cylindre->draw();
-	myEngine.mvMatrixStack.popMatrix();
 
-	//DISQUE PR FERMER CYL
-	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
-	myEngine.mvMatrixStack.addRotation(M_PI/2-M_PI/16,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({4.5f,4.5f,4.5f});
+	myEngine.mvMatrixStack.popMatrix();
 	myEngine.updateMvMatrix();
-	disque.drawShape();
-	myEngine.mvMatrixStack.popMatrix();
 
-	//2 ème disque pr fermer
+
+// 	// ROUES DROITE COTE DROIT (quand face au train)
+
+ 	myEngine.setFlatColor(1.f, 0.f, 0.20f);
 	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,-2.f,6.5f});
-	myEngine.mvMatrixStack.addRotation(M_PI/2-M_PI/16,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({4.5f,4.5f,4.5f});
-	myEngine.updateMvMatrix();
-	disque.drawShape();
-	myEngine.mvMatrixStack.popMatrix();
-
-	myEngine.mvMatrixStack.popMatrix();
-
-	
-//ROUES COTE GAUCHE (face au train)
-
+ 	myEngine.mvMatrixStack.addTranslation({0,3,0});
 
 // ROUES GAUCHE COTE DROIT (quand face au train)
 
 	myEngine.setFlatColor(1.f, 0.f, 0.20f);
-	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({-17.f,-25.f,-6.f});
-	myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
-	myEngine.mvMatrixStack.addHomothety({2.f,2.f,2.f});
+	 myEngine.mvMatrixStack.pushMatrix();
+	 myEngine.mvMatrixStack.addHomothety({1.f,1.5f,1.5f});
 
 	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
-	myEngine.mvMatrixStack.addRotation(-M_PI,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({4.5f,2.f,4.5f});
+	myEngine.mvMatrixStack.addTranslation({3.f,3.f,1.f});
+	myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
 	myEngine.updateMvMatrix();
 	cylindre->draw();
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
+
 
 	//DISQUE PR FERMER CYL
 	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
-	myEngine.mvMatrixStack.addRotation(M_PI/2,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({4.5f,4.5f,4.5f});
+	myEngine.mvMatrixStack.addTranslation({3.f,3.f,1.f});
+	myEngine.mvMatrixStack.addRotation(M_PI/2,{0,1,0});
 	myEngine.updateMvMatrix();
 	disque.drawShape();
 	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
 	//2 ème disque pr fermer
 	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,-2.f,6.5f});
-	myEngine.mvMatrixStack.addRotation(M_PI/2,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({4.5f,4.5f,4.5f});
+	myEngine.mvMatrixStack.addTranslation({2.f,3.f,1.f});
+	myEngine.mvMatrixStack.addRotation(M_PI/2,{0,1,0});
 	myEngine.updateMvMatrix();
 	disque.drawShape();
-	myEngine.mvMatrixStack.popMatrix();
 
 	myEngine.mvMatrixStack.popMatrix();
-
-
-	// ROUES DROITE COTE DROIT (quand face au train)
-
-	myEngine.setFlatColor(1.f, 0.f, 0.20f);
-	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({-17.f,-25.f,-25.f});
-	myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
-	myEngine.mvMatrixStack.addHomothety({2.f,2.f,2.f});
-
-	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
-	myEngine.mvMatrixStack.addRotation(-M_PI,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({4.5f,2.f,4.5f});
 	myEngine.updateMvMatrix();
-	cylindre->draw();
-	myEngine.mvMatrixStack.popMatrix();
 
-	//DISQUE PR FERMER CYL
-	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
-	myEngine.mvMatrixStack.addRotation(M_PI/2,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({4.5f,4.5f,4.5f});
+	myEngine.mvMatrixStack.popMatrix();
 	myEngine.updateMvMatrix();
-	disque.drawShape();
-	myEngine.mvMatrixStack.popMatrix();
-
-	//2 ème disque pr fermer
-	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,-2.f,6.5f});
-	myEngine.mvMatrixStack.addRotation(M_PI/2,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({4.5f,4.5f,4.5f});
-	myEngine.updateMvMatrix();
-	disque.drawShape();
-	myEngine.mvMatrixStack.popMatrix();
-
-	myEngine.mvMatrixStack.popMatrix();
-
-	//PAVE DROIT 
-	myEngine.setFlatColor(1.f, 1.f, 0.20f);
-	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,-8.f,-15.f});
-	myEngine.mvMatrixStack.addRotation(-M_PI/2-M_PI/16,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({30.f,10.f,50.f});
-	myEngine.updateMvMatrix();
-	cube->draw();
-	myEngine.mvMatrixStack.popMatrix();
 	
-	//SOL DU WAGON
-	myEngine.setFlatColor(1.f, 1.f, 0.20f);
-	myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,-25.f,-17.f});
-	myEngine.mvMatrixStack.addRotation(-M_PI,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({30.f,5.f,30.f});
-	myEngine.updateMvMatrix();
-	cube->draw();
-	myEngine.mvMatrixStack.popMatrix();
+// //ROUES COTE GAUCHE (face au train)
 
 
-	drawCurvedCylinder2();
+// // ROUES GAUCHE COTE DROIT (quand face au train)
+
+// 	myEngine.setFlatColor(1.f, 0.f, 0.20f);
+// 	myEngine.mvMatrixStack.pushMatrix();
+// 	myEngine.mvMatrixStack.addTranslation({-17.f,-25.f,-6.f});
+// 	myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
+// 	myEngine.mvMatrixStack.addHomothety({2.f,2.f,2.f});
+
+// 	myEngine.mvMatrixStack.pushMatrix();
+// 	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
+// 	myEngine.mvMatrixStack.addRotation(-M_PI,{1,0,0});
+// 	myEngine.mvMatrixStack.addHomothety({4.5f,2.f,4.5f});
+// 	myEngine.updateMvMatrix();
+// 	cylindre->draw();
+
+// 	myEngine.mvMatrixStack.popMatrix();
+// 	myEngine.updateMvMatrix();
+
+// 	//DISQUE PR FERMER CYL
+// 	myEngine.mvMatrixStack.pushMatrix();
+// 	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
+// 	myEngine.mvMatrixStack.addRotation(M_PI/2,{1,0,0});
+// 	myEngine.mvMatrixStack.addHomothety({4.5f,4.5f,4.5f});
+// 	myEngine.updateMvMatrix();
+// 	disque.drawShape();
+
+// 	myEngine.mvMatrixStack.popMatrix();
+// 	myEngine.updateMvMatrix();
+
+// 	//2 ème disque pr fermer
+// 	myEngine.mvMatrixStack.pushMatrix();
+// 	myEngine.mvMatrixStack.addTranslation({0.f,-2.f,6.5f});
+// 	myEngine.mvMatrixStack.addRotation(M_PI/2,{1,0,0});
+// 	myEngine.mvMatrixStack.addHomothety({4.5f,4.5f,4.5f});
+// 	myEngine.updateMvMatrix();
+// 	disque.drawShape();
+
+// 	myEngine.mvMatrixStack.popMatrix();
+// 	myEngine.updateMvMatrix();
+
+// 	myEngine.mvMatrixStack.popMatrix();
+// 	myEngine.updateMvMatrix();
+
+
+// 	// ROUES DROITE COTE DROIT (quand face au train)
+
+// 	myEngine.setFlatColor(1.f, 0.f, 0.20f);
+// 	myEngine.mvMatrixStack.pushMatrix();
+// 	myEngine.mvMatrixStack.addTranslation({-17.f,-25.f,-25.f});
+// 	myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
+// 	myEngine.mvMatrixStack.addHomothety({2.f,2.f,2.f});
+
+// 	myEngine.mvMatrixStack.pushMatrix();
+// 	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
+// 	myEngine.mvMatrixStack.addRotation(-M_PI,{1,0,0});
+// 	myEngine.mvMatrixStack.addHomothety({4.5f,2.f,4.5f});
+// 	myEngine.updateMvMatrix();
+// 	cylindre->draw();
+
+// 	myEngine.mvMatrixStack.popMatrix();
+// 	myEngine.updateMvMatrix();
+
+// 	//DISQUE PR FERMER CYL
+// 	myEngine.mvMatrixStack.pushMatrix();
+// 	myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
+// 	myEngine.mvMatrixStack.addRotation(M_PI/2,{1,0,0});
+// 	myEngine.mvMatrixStack.addHomothety({4.5f,4.5f,4.5f});
+// 	myEngine.updateMvMatrix();
+// 	disque.drawShape();
+
+// 	myEngine.mvMatrixStack.popMatrix();
+// 	myEngine.updateMvMatrix();
+
+// 	//2 ème disque pr fermer
+// 	myEngine.mvMatrixStack.pushMatrix();
+// 	myEngine.mvMatrixStack.addTranslation({0.f,-2.f,6.5f});
+// 	myEngine.mvMatrixStack.addRotation(M_PI/2,{1,0,0});
+// 	myEngine.mvMatrixStack.addHomothety({4.5f,4.5f,4.5f});
+// 	myEngine.updateMvMatrix();
+// 	disque.drawShape();
+
+// 	myEngine.mvMatrixStack.popMatrix();
+// 	myEngine.updateMvMatrix();
+
+// 	myEngine.mvMatrixStack.popMatrix();
+// 	myEngine.updateMvMatrix();
+
+// 	//PAVE DROIT 
+// 	myEngine.setFlatColor(1.f, 1.f, 0.20f);
+// 	myEngine.mvMatrixStack.pushMatrix();
+// 	myEngine.mvMatrixStack.addTranslation({0.f,-8.f,-15.f});
+// 	myEngine.mvMatrixStack.addRotation(-M_PI/2-M_PI/16,{1,0,0});
+// 	myEngine.mvMatrixStack.addHomothety({30.f,10.f,50.f});
+// 	myEngine.updateMvMatrix();
+// 	cube->draw();
+
+// 	myEngine.mvMatrixStack.popMatrix();
+// 	myEngine.updateMvMatrix();
+	
+// 	//SOL DU WAGON
+// 	myEngine.setFlatColor(1.f, 1.f, 0.20f);
+// 	myEngine.mvMatrixStack.pushMatrix();
+// 	myEngine.mvMatrixStack.addTranslation({0.f,-25.f,-17.f});
+// 	myEngine.mvMatrixStack.addRotation(-M_PI,{1,0,0});
+// 	myEngine.mvMatrixStack.addHomothety({30.f,5.f,30.f});
+// 	myEngine.updateMvMatrix();
+// 	cube->draw();
+
+// 	myEngine.mvMatrixStack.popMatrix();
+// 	myEngine.updateMvMatrix();
+
+
+// 	drawCurvedCylinder2();
 
 	
 
