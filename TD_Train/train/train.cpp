@@ -1,5 +1,4 @@
 #include "train.hpp"
-
 using namespace glbasimac;
 using namespace STP3D;
 

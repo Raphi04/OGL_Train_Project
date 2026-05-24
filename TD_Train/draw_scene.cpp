@@ -4,6 +4,7 @@
 
 #include "rails/rails.hpp"
 #include "terrain/terrain.hpp"
+#include "train/train.hpp"
 
 /* Initialisation des formes de la scèene */
 void initScene() {
