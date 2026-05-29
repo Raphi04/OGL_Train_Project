@@ -96,7 +96,10 @@ private:
  		size_one_elt.clear();
 		attr_id.clear();
 		attr_semantic.clear();
+		if (!vbo_id.empty()) {
+
 		glDeleteBuffers(vbo_id.size(),&(vbo_id[0]));
+		}
 		vbo_id.clear();
 		glDeleteVertexArrays(1,&id_vao);
 	}
@@ -119,7 +122,9 @@ private:
 		// Create all VBO (\TODO check every VBO is created)
 		vbo_id.resize(buffers.size());
 
+		if (!vbo_id.empty()) {
 		glGenBuffers(buffers.size(),&(vbo_id[0]));
+		}
 
 		// Transfer all data for all VBO from CPU to GPU
 		for(std::vector<int>::size_type i = 0; i < buffers.size(); ++i) {
@@ -173,7 +178,10 @@ private:
  		size_one_elt.clear();
 		attr_id.clear();
 		attr_semantic.clear();
+		if (!vbo_id.empty()) {
+
 		glDeleteBuffers(vbo_id.size(),&(vbo_id[0]));
+		}
 		vbo_id.clear();
 		glDeleteVertexArrays(1,&id_vao);
 	}
