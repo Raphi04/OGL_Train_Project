@@ -58,7 +58,7 @@ myEngine.setFlatColor(0.92f, 0.81f, 0.20f);
 	myEngine.mvMatrixStack.pushMatrix();
 		myEngine.mvMatrixStack.addTranslation({0.0f,0.f,6.f});
 		myEngine.mvMatrixStack.addRotation(-M_PI/16,{1,0,0});
-		myEngine.mvMatrixStack.addHomothety({1.f,1.f,1.f});
+		myEngine.mvMatrixStack.addHomothety({1.f,0.8f,1.f});
 		myEngine.updateMvMatrix();
 		body->draw();
 	myEngine.mvMatrixStack.popMatrix();
@@ -68,7 +68,7 @@ myEngine.setFlatColor(0.92f, 0.81f, 0.20f);
 	myEngine.mvMatrixStack.pushMatrix();
 		myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
 		myEngine.mvMatrixStack.addRotation(-M_PI-M_PI/16,{1,0,0});
-		myEngine.mvMatrixStack.addHomothety({4.5f,2.f,4.5f});
+		myEngine.mvMatrixStack.addHomothety({4.5f,1.5f,4.5f});
 		myEngine.updateMvMatrix();
 		cylindre->draw();
 	myEngine.mvMatrixStack.popMatrix();
@@ -260,7 +260,8 @@ myEngine.updateMvMatrix();
 
 myEngine.setFlatColor(1.f, 0.f, 0.20f);
 myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addHomothety({1.f,1.5f,1.5f});
+myEngine.mvMatrixStack.addTranslation({-1.f,-1.f,0.f});
+	myEngine.mvMatrixStack.addHomothety({1.5f,2.f,2.f});
 	myEngine.mvMatrixStack.pushMatrix();
 		myEngine.mvMatrixStack.addTranslation({3.f,3.f,1.f});
 		myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
@@ -296,9 +297,9 @@ myEngine.updateMvMatrix();
 
 myEngine.setFlatColor(1.f, 0.f, 0.20f);
 myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0,3,0});
+	myEngine.mvMatrixStack.addTranslation({-1.f,3,0});
 	myEngine.setFlatColor(1.f, 0.f, 0.20f);
-	myEngine.mvMatrixStack.addHomothety({1.f,1.5f,1.5f});
+	myEngine.mvMatrixStack.addHomothety({1.5f,2.f,2.f});
 
 	myEngine.mvMatrixStack.pushMatrix();
 		myEngine.mvMatrixStack.addTranslation({3.f,3.f,1.f});
@@ -334,37 +335,42 @@ myEngine.updateMvMatrix();
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //GAUCHE
 myEngine.mvMatrixStack.pushMatrix();
-myEngine.mvMatrixStack.addTranslation({-5.f,0.f,0.f});
+myEngine.mvMatrixStack.addTranslation({-7.f,0.f,0.f});
 
-	myEngine.setFlatColor(1.f, 0.f, 0.20f);
 	myEngine.mvMatrixStack.pushMatrix();
-		myEngine.mvMatrixStack.addHomothety({1.f,1.5f,1.5f});
+	myEngine.mvMatrixStack.addTranslation({0.f,-1.f,0.f});
+
+		myEngine.setFlatColor(1.f, 0.f, 0.20f);
 		myEngine.mvMatrixStack.pushMatrix();
-			myEngine.mvMatrixStack.addTranslation({3.f,3.f,1.f});
-			myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
+			myEngine.mvMatrixStack.addHomothety({1.5f,2.f,2.f});
+			myEngine.mvMatrixStack.pushMatrix();
+				myEngine.mvMatrixStack.addTranslation({3.f,3.f,1.f});
+				myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
+				myEngine.updateMvMatrix();
+				cylindre->draw();
+			myEngine.mvMatrixStack.popMatrix();
 			myEngine.updateMvMatrix();
-			cylindre->draw();
-		myEngine.mvMatrixStack.popMatrix();
-		myEngine.updateMvMatrix();
 
 
-		//DISQUE PR FERMER CYL
-		myEngine.mvMatrixStack.pushMatrix();
-			myEngine.mvMatrixStack.addTranslation({3.f,3.f,1.f});
-			myEngine.mvMatrixStack.addRotation(M_PI/2,{0,1,0});
+			//DISQUE PR FERMER CYL
+			myEngine.mvMatrixStack.pushMatrix();
+				myEngine.mvMatrixStack.addTranslation({3.f,3.f,1.f});
+				myEngine.mvMatrixStack.addRotation(M_PI/2,{0,1,0});
+				myEngine.updateMvMatrix();
+				disque.drawShape();
+			myEngine.mvMatrixStack.popMatrix();
 			myEngine.updateMvMatrix();
-			disque.drawShape();
-		myEngine.mvMatrixStack.popMatrix();
-		myEngine.updateMvMatrix();
 
-		//2 ème disque pr fermer
-		myEngine.mvMatrixStack.pushMatrix();
-			myEngine.mvMatrixStack.addTranslation({2.f,3.f,1.f});
-			myEngine.mvMatrixStack.addRotation(M_PI/2,{0,1,0});
+			//2 ème disque pr fermer
+			myEngine.mvMatrixStack.pushMatrix();
+				myEngine.mvMatrixStack.addTranslation({2.f,3.f,1.f});
+				myEngine.mvMatrixStack.addRotation(M_PI/2,{0,1,0});
+				myEngine.updateMvMatrix();
+				disque.drawShape();
+			myEngine.mvMatrixStack.popMatrix();
 			myEngine.updateMvMatrix();
-			disque.drawShape();
-		myEngine.mvMatrixStack.popMatrix();
-		myEngine.updateMvMatrix();
+	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
 	myEngine.mvMatrixStack.popMatrix();
 	myEngine.updateMvMatrix();
@@ -376,7 +382,7 @@ myEngine.mvMatrixStack.addTranslation({-5.f,0.f,0.f});
 	myEngine.mvMatrixStack.pushMatrix();
 		myEngine.mvMatrixStack.addTranslation({0,3,0});
 		myEngine.setFlatColor(1.f, 0.f, 0.20f);
-		myEngine.mvMatrixStack.addHomothety({1.f,1.5f,1.5f});
+		myEngine.mvMatrixStack.addHomothety({1.5f,2.f,2.f});
 
 		myEngine.mvMatrixStack.pushMatrix();
 			myEngine.mvMatrixStack.addTranslation({3.f,3.f,1.f});
@@ -412,52 +418,70 @@ myEngine.mvMatrixStack.popMatrix();
 myEngine.updateMvMatrix();
 
  //REGLER LES TAILLES
+myEngine.mvMatrixStack.pushMatrix();
+myEngine.mvMatrixStack.addTranslation({0.f,-4.f,0.f});
+myEngine.mvMatrixStack.addHomothety({1.f,1.2f,1.2f});
 
-//PAVE DROIT 
-myEngine.setFlatColor(1.f, 1.f, 0.20f);
-myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,10.5f,5.5f});
-	myEngine.mvMatrixStack.addRotation(-M_PI/16,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({4.5f,0.5f,8.f});
+	//PAVE DROIT VERTIALE
+	myEngine.setFlatColor(1.f, 1.f, 0.20f);
+	myEngine.mvMatrixStack.pushMatrix();
+		myEngine.mvMatrixStack.addTranslation({0.f,10.5f,5.5f});
+		myEngine.mvMatrixStack.addRotation(-M_PI/16,{1,0,0});
+		myEngine.mvMatrixStack.addHomothety({4.5f,0.5f,8.f});
+		myEngine.updateMvMatrix();
+		cube->draw();
+	myEngine.mvMatrixStack.popMatrix();
 	myEngine.updateMvMatrix();
-	cube->draw();
-myEngine.mvMatrixStack.popMatrix();
-myEngine.updateMvMatrix();
-	
-//SOL DU WAGON
-myEngine.setFlatColor(1.f, 0.9f, 0.20f);
-myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({0.f,11.f,4.f});
-	myEngine.mvMatrixStack.addRotation(-M_PI,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({4.5f,3.f,0.5f});
+		
+	//SOL DU WAGON
+	myEngine.setFlatColor(1.f, 0.9f, 0.20f);
+	myEngine.mvMatrixStack.pushMatrix();
+		myEngine.mvMatrixStack.addTranslation({0.f,11.f,2.f});
+		myEngine.mvMatrixStack.addRotation(-M_PI,{1,0,0});
+		myEngine.mvMatrixStack.addHomothety({4.5f,3.f,0.5f});
+		myEngine.updateMvMatrix();
+		cube->draw();
+	myEngine.mvMatrixStack.popMatrix();
 	myEngine.updateMvMatrix();
-	cube->draw();
+
+	//BARRIERE GAUCHE
+	myEngine.setFlatColor(1.f, 0.67f, 0.20f);
+	myEngine.mvMatrixStack.pushMatrix();
+		myEngine.mvMatrixStack.addTranslation({-2.f,11.5f,5.5f});
+		myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
+		myEngine.mvMatrixStack.addRotation(M_PI/16,{0,1,0});
+		myEngine.mvMatrixStack.addHomothety({2.f,0.5f,7.2f});
+		myEngine.updateMvMatrix();
+		cube->draw();
+	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
+
+	//BARRIERE DROITE
+	myEngine.setFlatColor(1.f, 0.67f, 0.20f);
+	myEngine.mvMatrixStack.pushMatrix();
+		myEngine.mvMatrixStack.addTranslation({2.f,11.5f,5.5f});
+		myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
+		myEngine.mvMatrixStack.addRotation(M_PI/16,{0,1,0});
+		myEngine.mvMatrixStack.addHomothety({2.f,0.5f,7.2f});
+		myEngine.updateMvMatrix();
+		cube->draw();
+	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
+
+	//TOIT
+	//BARRIERE DROITE
+	myEngine.setFlatColor(0.67f, 0.67f, 0.20f);
+	myEngine.mvMatrixStack.pushMatrix();
+		myEngine.mvMatrixStack.addTranslation({0.f,12.2f,8.7f});
+		myEngine.mvMatrixStack.addRotation(-M_PI/16,{1,0,0});
+		myEngine.mvMatrixStack.addHomothety({4.5f,2.3f,1.f}); //(x,z,y)
+		myEngine.updateMvMatrix();
+		cube->draw();
+	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 myEngine.mvMatrixStack.popMatrix();
 myEngine.updateMvMatrix();
 
-//BARRIERE GAUCHE
-myEngine.setFlatColor(1.f, 0.67f, 0.20f);
-myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({-3.5f,11.5f,6.f});
-	myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
-	myEngine.mvMatrixStack.addRotation(-M_PI/16,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({2.f,0.5f,4.f});
-	myEngine.updateMvMatrix();
-	cube->draw();
-myEngine.mvMatrixStack.popMatrix();
-myEngine.updateMvMatrix();
-
-//BARRIERE DROITE
-myEngine.setFlatColor(1.f, 0.67f, 0.20f);
-myEngine.mvMatrixStack.pushMatrix();
-	myEngine.mvMatrixStack.addTranslation({3.5f,11.5f,6.f});
-	myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
-	myEngine.mvMatrixStack.addRotation(-M_PI/16,{1,0,0});
-	myEngine.mvMatrixStack.addHomothety({2.f,0.5f,4.f});
-	myEngine.updateMvMatrix();
-	cube->draw();
-myEngine.mvMatrixStack.popMatrix();
-myEngine.updateMvMatrix();
-	
+//REMABRDE VERTICALE DROITE ET GAUCHE
 
 }
