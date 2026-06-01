@@ -6,6 +6,7 @@
 #include "glbasimac/glbi_convex_2D_shape.hpp"
 #include "tools/basic_mesh.hpp"
 #include "glbasimac/glbi_engine.hpp"
+#include "glbasimac/glbi_texture.hpp"
 
 using namespace glbasimac;
 

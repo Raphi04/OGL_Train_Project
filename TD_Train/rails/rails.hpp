@@ -8,6 +8,8 @@
 
 using namespace glbasimac;
 
+#include "../texture/texture.hpp"
+
 extern RailsParams railParams;
 
 void initCurvedRails();
