@@ -17,35 +17,60 @@ void initStraightRails() {
 		-(sr / 2.f),  0.f, 0.f,
 		-(sr / 2.f), 10.f, 0.f,
 		-(sr / 2.f),  0.f,  sr,
+
+		-(sr / 2.f),  0.f,  sr,
+		-(sr / 2.f), 10.f, 0.f,
 		-(sr / 2.f), 10.f,  sr,
 
 		/* Face du Haut */
+		-(sr / 2.f),  0.f,  sr,
+		-(sr / 2.f), 10.f,  sr,
 		 (sr / 2.f),  0.f,  sr,
+
+		 (sr / 2.f),  0.f,  sr,
+		-(sr / 2.f), 10.f,  sr,
 		 (sr / 2.f), 10.f,  sr,
+
 
 		/* Face Droite */
 		 (sr / 2.f),   0.f, 0.f,
+		 (sr / 2.f),  10.f, 0.f,
+		 (sr / 2.f),   0.f,  sr,
+
+		 (sr / 2.f),   0.f,  sr,
+		 (sr / 2.f),  10.f,  sr,
 		 (sr / 2.f),  10.f, 0.f,
 
 		/* Face du Bas */
 		-(sr / 2.f),  0.f, 0.f,
 		-(sr / 2.f), 10.f, 0.f,
+		 (sr / 2.f),  0.f, 0.f,
+
+		 (sr / 2.f),  0.f, 0.f,
+		-(sr / 2.f), 10.f, 0.f,
 		 (sr / 2.f), 10.f, 0.f,
 
 		/* Face du Fond */
-		 (sr / 2.f), 10.f,  sr,
 		-(sr / 2.f), 10.f, 0.f,
+		 (sr / 2.f), 10.f, 0.f,
 		-(sr / 2.f), 10.f,  sr,
 
+		-(sr / 2.f), 10.f,  sr,
+		 (sr / 2.f), 10.f,  sr,
+		 (sr / 2.f), 10.f, 0.f,
+
 		/* Face Avant */
-		-(sr / 2.f), 0.f,  sr,
-		-(sr / 2.f), 0.f, 0.f,
-		 (sr / 2.f), 0.f,  sr,
-		 (sr / 2.f), 0.f, 0.f,
+		-(sr / 2.f), 0.f,  0.f,
+		 (sr / 2.f), 0.f,  0.f,
+		-(sr / 2.f), 0.f,   sr,
+
+		-(sr / 2.f), 0.f,   sr,
+		 (sr / 2.f), 0.f,  0.f,
+		 (sr / 2.f), 0.f,   sr,
 	};
 
 	rail.initShape(railShape);
-	rail.changeNature(GL_TRIANGLE_STRIP);
+	rail.changeNature(GL_TRIANGLES);
 }
 
 void initCurvedRails() {
@@ -114,8 +139,15 @@ void drawStraightRails() {
 			myEngine.mvMatrixStack.addTranslation({railParams.posRailOne, 0.f, 2 * railParams.balastRayons});
 			myEngine.updateMvMatrix();
 
-			myEngine.setFlatColor(0.75f, 0.75f, 0.75f);
-			rail.drawShape();
+			myEngine.activateTexturing(true);
+
+				metalTexture.attachTexture();
+
+				rail.drawShape();
+
+				metalTexture.detachTexture();
+
+			myEngine.activateTexturing(false);
 
 		myEngine.mvMatrixStack.popMatrix();
 		myEngine.updateMvMatrix();
@@ -126,8 +158,15 @@ void drawStraightRails() {
 			myEngine.mvMatrixStack.addTranslation({railParams.posRailTwo, 0.f, 2 * railParams.balastRayons});
 			myEngine.updateMvMatrix();
 
-			myEngine.setFlatColor(0.75f, 0.75f, 0.75f);
-			rail.drawShape();
+			myEngine.activateTexturing(true);
+
+				metalTexture.attachTexture();
+
+				rail.drawShape();
+
+				metalTexture.detachTexture();
+
+			myEngine.activateTexturing(false);
 
 		myEngine.mvMatrixStack.popMatrix();
 		myEngine.updateMvMatrix();
@@ -163,9 +202,16 @@ void drawStraightRails() {
 					myEngine.mvMatrixStack.addRotation(-M_PI * 90 / 180, {0.f, 0.f, 1.f});
 					myEngine.updateMvMatrix();
 
-					myEngine.setFlatColor(157 / 255.f, 101 / 255.f, 61 / 255.f);
-					balast->draw();
-				
+					myEngine.activateTexturing(true);
+
+						woodTexture.attachTexture();
+
+						balast->draw();
+
+						woodTexture.detachTexture();
+
+					myEngine.activateTexturing(false);
+
 				myEngine.mvMatrixStack.popMatrix();
 				myEngine.updateMvMatrix();
 			}
@@ -194,8 +240,15 @@ void drawCurvedRails() {
 				myEngine.mvMatrixStack.addTranslation({posX, posY, 0.f});
 				myEngine.updateMvMatrix();
 			
-				myEngine.setFlatColor(0.75f, 0.75f, 0.75f);
-				curvedRail.drawShape();
+				myEngine.activateTexturing(true);
+
+					metalTexture.attachTexture();
+
+					curvedRail.drawShape();
+
+					metalTexture.detachTexture();
+
+				myEngine.activateTexturing(false);
 
 			myEngine.mvMatrixStack.popMatrix();
 			myEngine.updateMvMatrix();
@@ -212,8 +265,15 @@ void drawCurvedRails() {
 				myEngine.mvMatrixStack.addTranslation({posX, posY, 0.f});
 				myEngine.updateMvMatrix();
 			
-				myEngine.setFlatColor(0.75f, 0.75f, 0.75f);
-				curvedRail.drawShape();
+				myEngine.activateTexturing(true);
+
+					metalTexture.attachTexture();
+
+					curvedRail.drawShape();
+
+					metalTexture.detachTexture();
+
+				myEngine.activateTexturing(false);
 
 			myEngine.mvMatrixStack.popMatrix();
 			myEngine.updateMvMatrix();
@@ -232,9 +292,17 @@ void drawCurvedRails() {
 					myEngine.mvMatrixStack.addRotation(-M_PI * 90 / 180, {0.f, 0.f, 1.f});
 					myEngine.mvMatrixStack.addRotation(angle, {0.f, 0.f, 1.f});
 					myEngine.updateMvMatrix();
-			
-					myEngine.setFlatColor(157 / 255.f, 101 / 255.f, 61 / 255.f);
-					balast->draw();
+								
+					myEngine.activateTexturing(true);
+
+						woodTexture.attachTexture();
+
+						balast->draw();
+
+						woodTexture.detachTexture();
+
+					myEngine.activateTexturing(false);
+
 
 				myEngine.mvMatrixStack.popMatrix();
 				myEngine.updateMvMatrix();

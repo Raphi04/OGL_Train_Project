@@ -8,6 +8,9 @@
 
 /* Initialisation des formes de la scèene */
 void initScene() {
+	// Active les textures
+	glActiveTexture(GL_TEXTURE0);
+	createTexture();
 
 	/* Initialisation du repère*/
 	initRepere();
