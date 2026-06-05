@@ -512,5 +512,13 @@ myEngine.mvMatrixStack.popMatrix();
 	myEngine.updateMvMatrix();
 
 //REMABRDE VERTICALE DROITE ET GAUCHE
+myEngine.setFlatColor(0.925, 0.745, 0.286);
+	myEngine.mvMatrixStack.pushMatrix();
+		myEngine.mvMatrixStack.addTranslation({2.f,11.f,3.5f});
+		myEngine.mvMatrixStack.addHomothety({0.5f,3.f,2.5f}); //(x,z,y)
+		myEngine.updateMvMatrix();
+		cube->draw();
+myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
 
 }
