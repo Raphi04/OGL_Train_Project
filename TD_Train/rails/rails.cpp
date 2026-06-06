@@ -5,9 +5,11 @@ IndexedMesh* test3;
 
 GLBI_Convex_2D_Shape rail{3};
 GLBI_Convex_2D_Shape curvedRail{3};
-IndexedMesh* balast;
+IndexedMesh* balast{};
 
-RailsParams railParams {};
+IndexedMesh* cube{};
+
+RailsParams railParams{};
 
 void initStraightRails() {
 	float const& sr { railParams.rail_size };
@@ -69,7 +71,113 @@ void initStraightRails() {
 		 (sr / 2.f), 0.f,   sr,
 	};
 
-	rail.initShape(railShape);
+	std::vector<float> railShapeNormals {
+		/* Face de Gauche */
+		0.f, -1.f, 0.f,
+		0.f, -1.f, 0.f,
+		0.f, -1.f, 0.f,
+		0.f, -1.f, 0.f,
+		0.f, -1.f, 0.f,
+		0.f, -1.f, 0.f,
+
+		/* Face du Haut */
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
+
+		/* Face de Droite */
+		0.f, 1.f, 0.f,
+		0.f, 1.f, 0.f,
+		0.f, 1.f, 0.f,
+		0.f, 1.f, 0.f,
+		0.f, 1.f, 0.f,
+		0.f, 1.f, 0.f,
+
+		/* Face de Bas */
+		0.f, 0.f, -1.f,
+		0.f, 0.f, -1.f,
+		0.f, 0.f, -1.f,
+		0.f, 0.f, -1.f,
+		0.f, 0.f, -1.f,
+		0.f, 0.f, -1.f,
+
+		/* Face du Fond */
+		1.f, 0.f, 0.f,
+		1.f, 0.f, 0.f,
+		1.f, 0.f, 0.f,
+		1.f, 0.f, 0.f,
+		1.f, 0.f, 0.f,
+		1.f, 0.f, 0.f,
+
+		/* Face Avant */
+		-1.f, 0.f, 0.f,
+		-1.f, 0.f, 0.f,
+		-1.f, 0.f, 0.f,
+		-1.f, 0.f, 0.f,
+		-1.f, 0.f, 0.f,
+		-1.f, 0.f, 0.f,
+	};
+
+	std::vector<float> railShapeUvs {
+		/* Face Gauche */
+		0.f, 0.f,
+		0.f, 1.f,
+		1.f, 0.f,
+
+		1.f, 0.f,
+		0.f, 1.f,
+		1.f, 1.f,
+
+		/* Face du Haut */
+		0.f, 0.f,
+		0.f, 1.f,
+		1.f, 0.f,
+
+		1.f, 0.f,
+		0.f, 1.f,
+		1.f, 1.f,
+
+		/* Face Droite */
+		0.f, 0.f,
+		0.f, 1.f,
+		1.f, 0.f,
+
+		1.f, 0.f,
+		0.f, 1.f,
+		1.f, 1.f,
+
+		/* Face du Bas */
+		0.f, 0.f,
+		0.f, 1.f,
+		1.f, 0.f,
+
+		1.f, 0.f,
+		0.f, 1.f,
+		1.f, 1.f,
+
+		/* Face du Fond */
+		0.f, 0.f,
+		1.f, 0.f,
+		0.f, 1.f,
+
+		0.f, 1.f,
+		1.f, 1.f,
+		1.f, 0.f,
+
+		/* Face Avant */
+		0.f, 0.f,
+		1.f, 0.f,
+		0.f, 1.f,
+
+		0.f, 1.f,
+		1.f, 0.f,
+		1.f, 1.f
+	};
+
+	rail.initShape(railShape, railShapeNormals, railShapeUvs);
 	rail.changeNature(GL_TRIANGLES);
 }
 
@@ -81,41 +189,165 @@ void initCurvedRails() {
 		-(sr / 2.f), 0.f, 0.f,
 		-(sr / 2.f),  sr, 0.f,
 		 (sr / 2.f), 0.f, 0.f,
+
+		 (sr / 2.f), 0.f, 0.f,
 		 (sr / 2.f),  sr, 0.f,
+		-(sr / 2.f),  sr, 0.f,
 
 		/* Face du Fond */
 		-(sr / 2.f),  sr, 0.f,
 		-(sr / 2.f),  sr,  sr,
 		 (sr / 2.f),  sr, 0.f,
+
+		 (sr / 2.f),  sr, 0.f,
 		 (sr / 2.f),  sr,  sr,
+		-(sr / 2.f),  sr,  sr,
 
 		/* Face de Gauche*/
 		-(sr / 2.f),  sr,  sr,
 		-(sr / 2.f), 0.f,  sr,
 		-(sr / 2.f),  sr, 0.f,
+
+		-(sr / 2.f),  sr, 0.f,
 		-(sr / 2.f), 0.f, 0.f,
+		-(sr / 2.f), 0.f,  sr,
 
 		/* Face Avant */
 		-(sr / 2.f), 0.f,  sr,
-		 (sr / 2.f), 0.f, 0.f,
+		-(sr / 2.f), 0.f, 0.f,
 		 (sr / 2.f), 0.f,  sr,
-		-(sr / 2.f), 0.f,  sr,
+
+		 (sr / 2.f), 0.f,  sr,
+		 (sr / 2.f), 0.f, 0.f,
+		-(sr / 2.f), 0.f, 0.f,
 	
 		/* Face du Dessus */
 		-(sr / 2.f),  sr,  sr,
 		 (sr / 2.f),  sr,  sr,
-		-(sr / 2.f),  sr,  sr,
 		 (sr / 2.f), 0.f,  sr,
+
+		 (sr / 2.f), 0.f,  sr,
+		-(sr / 2.f), 0.f,  sr,
+		-(sr / 2.f),  sr,  sr,
 
 		/* Face de Droit */
 		 (sr / 2.f), 0.f, 0.f,
 		 (sr / 2.f),  sr, 0.f,
 		 (sr / 2.f), 0.f,  sr,
-		 (sr / 2.f),  sr,  sr
+
+		 (sr / 2.f), 0.f,  sr,
+		 (sr / 2.f),  sr,  sr,
+		 (sr / 2.f),  sr, 0.f
 	};
 
-	curvedRail.initShape(curvedRailShape);
-	curvedRail.changeNature(GL_TRIANGLE_STRIP);
+	std::vector<float> curvedRailShapeNormals {
+		/* Face de Bas */
+		0.f, 0.f, -1.f,
+		0.f, 0.f, -1.f,
+		0.f, 0.f, -1.f,
+		0.f, 0.f, -1.f,
+		0.f, 0.f, -1.f,
+		0.f, 0.f, -1.f,
+
+		/* Face du Fond */
+		1.f, 0.f, 0.f,
+		1.f, 0.f, 0.f,
+		1.f, 0.f, 0.f,
+		1.f, 0.f, 0.f,
+		1.f, 0.f, 0.f,
+		1.f, 0.f, 0.f,
+
+		/* Face de Gauche */
+		0.f, -1.f, 0.f,
+		0.f, -1.f, 0.f,
+		0.f, -1.f, 0.f,
+		0.f, -1.f, 0.f,
+		0.f, -1.f, 0.f,
+		0.f, -1.f, 0.f,
+
+		/* Face Avant */
+		-1.f, 0.f, 0.f,
+		-1.f, 0.f, 0.f,
+		-1.f, 0.f, 0.f,
+		-1.f, 0.f, 0.f,
+		-1.f, 0.f, 0.f,
+		-1.f, 0.f, 0.f,
+
+		/* Face du Haut */
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
+
+		/* Face de Droite */
+		0.f, 1.f, 0.f,
+		0.f, 1.f, 0.f,
+		0.f, 1.f, 0.f,
+		0.f, 1.f, 0.f,
+		0.f, 1.f, 0.f,
+		0.f, 1.f, 0.f,
+	};
+
+	std::vector<float> curvedRailShapeUvs {
+		/* Face du Bas */
+		0.f, 0.f,
+		0.f, 1.f,
+		1.f, 0.f,
+
+		1.f, 0.f,
+		1.f, 1.f,
+		0.f, 1.f,
+
+		/* Face du Fond */
+		0.f, 0.f,
+		0.f, 1.f,
+		1.f, 0.f,
+
+		1.f, 0.f,
+		1.f, 1.f,
+		0.f, 1.f,
+
+		/* Face de Gauche */
+		0.f, 1.f,
+		1.f, 1.f,
+		0.f, 0.f,
+
+		0.f, 0.f,
+		1.f, 0.f,
+		1.f, 1.f,
+
+		/* Face Avant */
+		0.f, 1.f,
+		0.f, 0.f,
+		1.f, 1.f,
+
+		1.f, 1.f,
+		1.f, 0.f,
+		0.f, 0.f,
+
+		/* Face du Dessus */
+		0.f, 1.f,
+		1.f, 1.f,
+		1.f, 0.f,
+
+		1.f, 0.f,
+		0.f, 0.f,
+		0.f, 1.f,
+
+		/* Face de Droite */
+		0.f, 0.f,
+		0.f, 1.f,
+		1.f, 0.f,
+
+		1.f, 0.f,
+		1.f, 1.f,
+		0.f, 1.f
+	};
+
+	curvedRail.initShape(curvedRailShape, curvedRailShapeNormals, curvedRailShapeUvs);
+	curvedRail.changeNature(GL_TRIANGLES);
 }
 
 void initBalast(){
@@ -139,15 +371,8 @@ void drawStraightRails() {
 			myEngine.mvMatrixStack.addTranslation({railParams.posRailOne, 0.f, 2 * railParams.balastRayons});
 			myEngine.updateMvMatrix();
 
-			myEngine.activateTexturing(true);
-
-				metalTexture.attachTexture();
-
-				rail.drawShape();
-
-				metalTexture.detachTexture();
-
-			myEngine.activateTexturing(false);
+			myEngine.setFlatColor(0.6f, 0.6f, 0.6f);
+			rail.drawShape();
 
 		myEngine.mvMatrixStack.popMatrix();
 		myEngine.updateMvMatrix();
@@ -158,15 +383,8 @@ void drawStraightRails() {
 			myEngine.mvMatrixStack.addTranslation({railParams.posRailTwo, 0.f, 2 * railParams.balastRayons});
 			myEngine.updateMvMatrix();
 
-			myEngine.activateTexturing(true);
-
-				metalTexture.attachTexture();
-
-				rail.drawShape();
-
-				metalTexture.detachTexture();
-
-			myEngine.activateTexturing(false);
+			myEngine.setFlatColor(0.6f, 0.6f, 0.6f);
+			rail.drawShape();
 
 		myEngine.mvMatrixStack.popMatrix();
 		myEngine.updateMvMatrix();
@@ -186,6 +404,8 @@ void drawStraightRails() {
 			myEngine.mvMatrixStack.addTranslation({railParams.balastX1, 0.f, railParams.balastRayons});
 			myEngine.updateMvMatrix();
 
+			// myEngine.switchToPhongShading();
+
 			for(int i { 0 }; i < 5; i++) {
 
 				/* Déplacement en Y */
@@ -202,12 +422,12 @@ void drawStraightRails() {
 					myEngine.mvMatrixStack.addRotation(-M_PI * 90 / 180, {0.f, 0.f, 1.f});
 					myEngine.updateMvMatrix();
 
-					myEngine.activateTexturing(true);
+					myEngine.activateTexturing(true);					
 
 						woodTexture.attachTexture();
-
+					
 						balast->draw();
-
+						
 						woodTexture.detachTexture();
 
 					myEngine.activateTexturing(false);
@@ -215,6 +435,8 @@ void drawStraightRails() {
 				myEngine.mvMatrixStack.popMatrix();
 				myEngine.updateMvMatrix();
 			}
+
+			// myEngine.switchToFlatShading();
 		
 		myEngine.mvMatrixStack.popMatrix();
 		myEngine.updateMvMatrix();
@@ -240,15 +462,8 @@ void drawCurvedRails() {
 				myEngine.mvMatrixStack.addTranslation({posX, posY, 0.f});
 				myEngine.updateMvMatrix();
 			
-				myEngine.activateTexturing(true);
-
-					metalTexture.attachTexture();
-
-					curvedRail.drawShape();
-
-					metalTexture.detachTexture();
-
-				myEngine.activateTexturing(false);
+				myEngine.setFlatColor(0.6f, 0.6f, 0.6f);
+				curvedRail.drawShape();
 
 			myEngine.mvMatrixStack.popMatrix();
 			myEngine.updateMvMatrix();
@@ -264,16 +479,8 @@ void drawCurvedRails() {
 				myEngine.mvMatrixStack.addTranslation({0.f, -railParams.rail_size / 2, 2 * railParams.balastRayons});
 				myEngine.mvMatrixStack.addTranslation({posX, posY, 0.f});
 				myEngine.updateMvMatrix();
-			
-				myEngine.activateTexturing(true);
 
-					metalTexture.attachTexture();
-
-					curvedRail.drawShape();
-
-					metalTexture.detachTexture();
-
-				myEngine.activateTexturing(false);
+				curvedRail.drawShape();
 
 			myEngine.mvMatrixStack.popMatrix();
 			myEngine.updateMvMatrix();

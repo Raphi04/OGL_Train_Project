@@ -9,7 +9,8 @@ void initCurvedCylinder(
     float const& nombrePoints
 ) {
 	std::vector<float> curvedCylinderPoints {};
-
+	std::vector<float> curvedCylinderPointsNormals {};
+	std::vector<float> curvedCylinderPointsUvs {};
 	
 	for(int i { 0 }; i <= nombrePoints; i++) {
 		float angleCercle { float(i * (2 * M_PI) / nombrePoints) };
@@ -29,7 +30,7 @@ void initCurvedCylinder(
 		}
 	}
 
-	curvedCylinder.initShape(curvedCylinderPoints);
+	curvedCylinder.initShape(curvedCylinderPoints, curvedCylinderPointsNormals, curvedCylinderPointsUvs);
 	curvedCylinder.changeNature(GL_POINTS);
 }
 
