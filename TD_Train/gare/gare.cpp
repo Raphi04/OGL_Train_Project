@@ -38,14 +38,52 @@ IndexedMesh* cube2;
 
  void drawGare(){
 	myEngine.setFlatColor(0.118, 0.118, 0.118);
-//BASE GARE
-
 	myEngine.mvMatrixStack.pushMatrix();
-		myEngine.mvMatrixStack.addTranslation({0.0f,0.f,6.f});
-		myEngine.mvMatrixStack.addRotation(-M_PI/16,{1,0,0});
-		myEngine.mvMatrixStack.addHomothety({1.f,0.8f,1.f});
+			myEngine.mvMatrixStack.addTranslation({0.0f,0.f,0.5f});
+			// myEngine.mvMatrixStack.addRotation(-M_PI/16,{1,0,0});
+			// myEngine.mvMatrixStack.addHomothety({1.f,0.8f,1.f});
+		//BASE GARE
+
+		myEngine.mvMatrixStack.pushMatrix();
+			//couche 1
+			myEngine.mvMatrixStack.addHomothety({10.f,20.f,0.3f});
+			myEngine.updateMvMatrix();
+			cube2->draw();
+		
+			//couche 2
+			myEngine.setFlatColor(1, 0, 0.118);
+			myEngine.mvMatrixStack.addTranslation({0.f,0.f,1.2f});
+			myEngine.mvMatrixStack.addHomothety({1.f,1,1.5f});
+			myEngine.updateMvMatrix();
+			cube2->draw();
+
+		 	//couche 3
+			myEngine.setFlatColor(0, 1, 0.118);
+			myEngine.mvMatrixStack.addTranslation({0.f,0.f,0.7f});
+			myEngine.mvMatrixStack.addHomothety({1.f,1,0.3f});
+			myEngine.updateMvMatrix();
+			cube2->draw();
+		myEngine.mvMatrixStack.popMatrix();
 		myEngine.updateMvMatrix();
-		body2->draw();
-	myEngine.mvMatrixStack.popMatrix();
-	myEngine.updateMvMatrix();
- }
+
+		//poteaux bois
+
+		myEngine.setFlatColor(0.431, 0.404, 0.38);
+	
+		
+
+
+			for (int i=0; i<=15; i++) {
+				myEngine.mvMatrixStack.pushMatrix();
+				myEngine.mvMatrixStack.addTranslation({-5.f, i*20.f/15.f-10.f, 0.3f});
+				myEngine.mvMatrixStack.addHomothety({0.5,0.5,5});
+				myEngine.updateMvMatrix();
+
+				cube2->draw();
+
+				myEngine.mvMatrixStack.popMatrix();
+			}
+		
+	
+	
+ } 
