@@ -5,6 +5,7 @@
 #include "rails/rails.hpp"
 #include "terrain/terrain.hpp"
 #include "train/train.hpp"
+#include "gare/gare.hpp"
 
 /* Initialisation des formes de la scèene */
 void initScene() {
@@ -26,6 +27,8 @@ void initScene() {
 	/* Initialisation de la grille du terrain */
 	initTerrainGrid();
 	initTrain();
+
+	initGare();
 }
 
 /* Dessin de la scène */
@@ -37,8 +40,11 @@ void drawScene() {
 
 	/* Dessin de terrain */
 	drawTerrain();
+
+	/*dDessin du train*/
 	drawTrain();
 	
+	drawGare();
 
 	/* Dessin de la grille du terrain*/
 	if(showTerrainGrid) {
