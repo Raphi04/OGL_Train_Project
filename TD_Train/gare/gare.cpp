@@ -66,22 +66,65 @@ IndexedMesh* cube2;
 		myEngine.mvMatrixStack.popMatrix();
 		myEngine.updateMvMatrix();
 
-		//poteaux bois
+		//poteaux bois fond
 
 		myEngine.setFlatColor(0.431, 0.404, 0.38);
-	
-		
-
-
-			for (int i=0; i<=15; i++) {
+			for (int i=0; i<=10; i++) {
 				myEngine.mvMatrixStack.pushMatrix();
-				myEngine.mvMatrixStack.addTranslation({-5.f, i*20.f/15.f-10.f, 0.3f});
-				myEngine.mvMatrixStack.addHomothety({0.5,0.5,5});
+				myEngine.mvMatrixStack.addTranslation({-5.f, i*20.f/10.f-10.f, 1.f});
+				myEngine.mvMatrixStack.addHomothety({0.5,0.5,3});
 				myEngine.updateMvMatrix();
-
 				cube2->draw();
-
 				myEngine.mvMatrixStack.popMatrix();
+
+				//rembarde
+				myEngine.mvMatrixStack.pushMatrix();
+				myEngine.mvMatrixStack.addTranslation({-5.f, i*20.f/10.f-10.f, 2.5f});
+				myEngine.mvMatrixStack.addHomothety({1.f,2.f,0.3});
+				myEngine.updateMvMatrix();
+				cube2->draw();
+				myEngine.mvMatrixStack.popMatrix();
+			}
+
+		//poteaux bois gauche
+		myEngine.setFlatColor(0.431, 0.404, 0.38);
+			for (int i=0; i<=3; i++) {
+				myEngine.mvMatrixStack.pushMatrix();
+				myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,-10.f, 1.f});
+				myEngine.mvMatrixStack.addHomothety({0.5,0.5,3});
+				myEngine.updateMvMatrix();
+				cube2->draw();
+				myEngine.mvMatrixStack.popMatrix();
+
+				//rembarde
+				myEngine.mvMatrixStack.pushMatrix();
+				myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,-10.f, 2.5f});
+				myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
+				myEngine.mvMatrixStack.addHomothety({1.f,2.f,0.3});
+				myEngine.updateMvMatrix();
+				cube2->draw();
+				myEngine.mvMatrixStack.popMatrix();
+			}
+
+		//poteau bois droite
+			for (int i=0; i<=3; i++) {
+				myEngine.mvMatrixStack.pushMatrix();
+				myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,10.f, 1.f});
+				myEngine.mvMatrixStack.addHomothety({0.5,0.5,3});
+				myEngine.updateMvMatrix();
+				cube2->draw();
+				myEngine.mvMatrixStack.popMatrix();
+
+				//rembarde
+				myEngine.setFlatColor(0.431, 0.404, 0.0);
+				myEngine.mvMatrixStack.pushMatrix();
+				myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,10.f, 2.5f});
+				myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
+				myEngine.mvMatrixStack.addHomothety({1.f,2.f,0.3});
+				myEngine.updateMvMatrix();
+				cube2->draw();
+				myEngine.mvMatrixStack.popMatrix();
+
 			}
 		
 	
