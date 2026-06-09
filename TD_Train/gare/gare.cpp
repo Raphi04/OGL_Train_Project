@@ -36,6 +36,29 @@ IndexedMesh* cube2;
 
  }
 
+ void drawToit(){
+		myEngine.mvMatrixStack.pushMatrix();
+			myEngine.mvMatrixStack.addTranslation({0,0,3});
+			myEngine.mvMatrixStack.addRotation(-M_PI/10,{0,1,0});
+			myEngine.mvMatrixStack.addHomothety({0.7,0.7,7.3});
+			myEngine.updateMvMatrix();
+			cube2->draw();
+		myEngine.mvMatrixStack.popMatrix();
+		myEngine.updateMvMatrix();
+
+		myEngine.mvMatrixStack.pushMatrix();
+			myEngine.mvMatrixStack.addTranslation({1,0,5.6});
+			myEngine.mvMatrixStack.addRotation(M_PI/4,{0,1,0});
+			myEngine.mvMatrixStack.addHomothety({0.5,0.5,4});
+			myEngine.updateMvMatrix();
+			cube2->draw();
+	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
+ 
+
+		
+ }
+
  void drawGare(){
 	myEngine.setFlatColor(0.118, 0.118, 0.118);
 	myEngine.mvMatrixStack.pushMatrix();
@@ -87,7 +110,6 @@ IndexedMesh* cube2;
 			}
 
 		//poteaux bois gauche
-		myEngine.setFlatColor(0.431, 0.404, 0.38);
 			for (int i=0; i<=3; i++) {
 				myEngine.mvMatrixStack.pushMatrix();
 				myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,-10.f, 1.f});
@@ -116,7 +138,7 @@ IndexedMesh* cube2;
 				myEngine.mvMatrixStack.popMatrix();
 
 				//rembarde
-				myEngine.setFlatColor(0.431, 0.404, 0.0);
+
 				myEngine.mvMatrixStack.pushMatrix();
 				myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,10.f, 2.5f});
 				myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
@@ -126,7 +148,30 @@ IndexedMesh* cube2;
 				myEngine.mvMatrixStack.popMatrix();
 
 			}
-		
-	
-	
+			// Poteau toit droit
+			myEngine.mvMatrixStack.pushMatrix();
+				myEngine.mvMatrixStack.addTranslation({-4,-8.5f, 0});
+				myEngine.updateMvMatrix();
+				drawToit();
+			myEngine.mvMatrixStack.popMatrix();
+			myEngine.updateMvMatrix();
+
+			// Poteau toit gauche
+			myEngine.mvMatrixStack.pushMatrix();
+				myEngine.mvMatrixStack.addTranslation({-4,8.5f, 0});
+				myEngine.updateMvMatrix();
+				drawToit();
+			myEngine.mvMatrixStack.popMatrix();
+			myEngine.updateMvMatrix();
+			
+		//TOIT
+			myEngine.mvMatrixStack.pushMatrix();
+				myEngine.mvMatrixStack.addTranslation({-3,0,6.7f});
+				myEngine.mvMatrixStack.addRotation(-M_PI/15,{0,1,0});
+				myEngine.mvMatrixStack.addHomothety({5.f,20.f,0.4});
+				myEngine.updateMvMatrix();
+				cube2->draw();
+				myEngine.mvMatrixStack.popMatrix();
+
+		//panneau
  } 
