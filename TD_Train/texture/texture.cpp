@@ -9,6 +9,11 @@ GLBI_Texture woodTexture;
 GLBI_Texture metalTexture;
 GLBI_Texture bois_gareTexture;
 GLBI_Texture acier_gareTexture;
+GLBI_Texture logo_trainTexture;
+GLBI_Texture pipeLogoTexture;
+GLBI_Texture goldTexture;
+GLBI_Texture wood2Texture;
+GLBI_Texture glassTexture;
 
 void createTexture() {
     stbi_set_flip_vertically_on_load(true);
@@ -71,7 +76,6 @@ void createTexture() {
 
 	///////////////////////ACIER TRAIN
 
-	////////////////////////////////////////////////////BOIS TRAIN
 	
     // Wood Texture
     int acierWidth {};
@@ -90,6 +94,128 @@ void createTexture() {
 	acier_gareTexture.loadImage(acierWidth, acierHeight, acierChannel, acier_gare);
 
 	stbi_image_free(acier_gare);
+
+//LOGO TRAIN
+  // Wood Texture
+    int logoWidth {};
+	int logoHeight {};
+	int logoChannel {};
+
+    unsigned char* logo_train { stbi_load("../TD_Train/texture/logo_train.png", &logoWidth, &logoHeight, &logoChannel, 0) };
+
+	if(logo_train == NULL) {
+		std::cout << "Le charchement de la texture pour logo train a échoué" << std::endl;
+	}
+
+    logo_trainTexture.createTexture();
+	logo_trainTexture.attachTexture();
+	logo_trainTexture.setParameters(GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	logo_trainTexture.loadImage(logoWidth, logoHeight, acierChannel, logo_train);
+
+	stbi_image_free(logo_train);
+
+//TUYAU
+int pipeLogoWidth {};
+int pipeLogoHeight {};
+int pipeLogoChannel {};
+
+unsigned char* pipe_logo {
+    stbi_load("../TD_Train/texture/pip2.jpg",
+              &pipeLogoWidth,
+              &pipeLogoHeight,
+              &pipeLogoChannel,
+              0)
+};
+
+if(pipe_logo == NULL) {
+    std::cout << "Le chargement de la texture pour le logo tuyau a échoué" << std::endl;
+}
+
+pipeLogoTexture.createTexture();
+pipeLogoTexture.attachTexture();
+pipeLogoTexture.setParameters(GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+
+pipeLogoTexture.loadImage(pipeLogoWidth, pipeLogoHeight, pipeLogoChannel, pipe_logo);
+
+stbi_image_free(pipe_logo);
+
+//OR
+// GOLD TEXTURE
+int goldWidth {};
+int goldHeight {};
+int goldChannel {};
+
+unsigned char* gold_texture {
+    stbi_load("../TD_Train/texture/gold.jpg",
+              &goldWidth,
+              &goldHeight,
+              &goldChannel,
+              0)
+};
+
+if(gold_texture == NULL) {
+    std::cout << "Le chargement de la texture gold a échoué" << std::endl;
+}
+
+goldTexture.createTexture();
+goldTexture.attachTexture();
+goldTexture.setParameters(GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+goldTexture.loadImage(goldWidth, goldHeight, goldChannel, gold_texture);
+
+stbi_image_free(gold_texture);
+
+//BOIS TRAIN
+int wood2Width {};
+int wood2Height {};
+int wood2Channel {};
+
+unsigned char* wood2_texture {
+    stbi_load("../TD_Train/texture/wood2.png",
+              &wood2Width,
+              &wood2Height,
+              &wood2Channel,
+              0)
+};
+
+if(wood2_texture == NULL) {
+    std::cout << "Le chargement de la texture wood2 a échoué" << std::endl;
+}
+
+wood2Texture.createTexture();
+wood2Texture.attachTexture();
+wood2Texture.setParameters(GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+wood2Texture.loadImage(wood2Width, wood2Height, wood2Channel, wood2_texture);
+
+stbi_image_free(wood2_texture);
+
+//GLASS
+
+int glassWidth {};
+int glassHeight {};
+int glassChannel {};
+
+unsigned char* glass_texture {
+    stbi_load("../TD_Train/texture/glass.jpg",
+              &glassWidth,
+              &glassHeight,
+              &glassChannel,
+              0)
+};
+
+if(glass_texture == NULL) {
+    std::cout << "Le chargement de la texture glass a échoué" << std::endl;
+}
+
+glassTexture.createTexture();
+glassTexture.attachTexture();
+glassTexture.setParameters(GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+glassTexture.loadImage(glassWidth, glassHeight, glassChannel, glass_texture);
+
+stbi_image_free(glass_texture);
 
 
 }

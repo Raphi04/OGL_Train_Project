@@ -45,6 +45,7 @@ void initTrain()
 	//CUBE
 	cube=basicCube(1);
 	cube-> createVAO();
+	
 
 
 
@@ -76,12 +77,16 @@ myEngine.setFlatColor(0.118, 0.118, 0.118);
 	myEngine.updateMvMatrix();
 
 	//DISQUE PR FERMER CYL
+	myEngine.activateTexturing(true);
+	logo_trainTexture.attachTexture();
 	myEngine.mvMatrixStack.pushMatrix();
 		myEngine.mvMatrixStack.addTranslation({0.f,0.f,6.f});
 		myEngine.mvMatrixStack.addRotation(M_PI/2-M_PI/16,{1,0,0});
 		myEngine.mvMatrixStack.addHomothety({4.5f,4.5f,4.5f});
 		myEngine.updateMvMatrix();
 		disque.drawShape();
+		logo_trainTexture.detachTexture();
+	myEngine.activateTexturing(false);
 	myEngine.mvMatrixStack.popMatrix();
 	myEngine.updateMvMatrix();
 
@@ -139,6 +144,8 @@ myEngine.setFlatColor(0.239, 0.149, 0.094);
 // //PETIT TRUC SUR LE DEVANT AU DESSUS VERTICALE
 
 myEngine.setFlatColor(0.255, 0.365, 0.255);
+	myEngine.activateTexturing(true);
+	pipeLogoTexture.attachTexture();
 myEngine.mvMatrixStack.pushMatrix();
 	myEngine.mvMatrixStack.addTranslation({0.f,0.f,13.f});
 	myEngine.mvMatrixStack.addRotation(-M_PI/2,{1,0,0});
@@ -172,7 +179,8 @@ myEngine.mvMatrixStack.pushMatrix();
 		disque.drawShape();
 	myEngine.mvMatrixStack.popMatrix();
 	myEngine.updateMvMatrix();
-
+pipeLogoTexture.detachTexture();
+myEngine.activateTexturing(false);
 myEngine.mvMatrixStack.popMatrix();
 myEngine.updateMvMatrix();
 
@@ -218,7 +226,8 @@ myEngine.mvMatrixStack.popMatrix();
 myEngine.updateMvMatrix();
 
 // //anneau
-myEngine.setFlatColor(0.898, 0.776, 0.392);
+myEngine.activateTexturing(true);
+ goldTexture.attachTexture();
 myEngine.mvMatrixStack.pushMatrix();
 	myEngine.mvMatrixStack.addTranslation({0.f,6.f,9.f});
 	myEngine.mvMatrixStack.addRotation(-M_PI/2,{1,0,0});
@@ -238,6 +247,8 @@ myEngine.mvMatrixStack.pushMatrix();
 		myEngine.mvMatrixStack.addRotation(M_PI/2-M_PI/16,{1,0,0});
 		myEngine.updateMvMatrix();
 		disque.drawShape();
+	goldTexture.detachTexture();
+	myEngine.activateTexturing(false);
 	myEngine.mvMatrixStack.popMatrix();
 	myEngine.updateMvMatrix();
 
@@ -441,9 +452,34 @@ myEngine.mvMatrixStack.addHomothety({1.f,1.2f,1.2f});
 		cube->draw();
 	myEngine.mvMatrixStack.popMatrix();
 	myEngine.updateMvMatrix();
+
+	//FENETRES 1
+	//myEngine.setFlatColor(1, 0.224, 0.251);
+	myEngine.activateTexturing(true);
+	 glassTexture.attachTexture();
+		myEngine.mvMatrixStack.pushMatrix();
+			myEngine.mvMatrixStack.addTranslation({-1.f,10.5f,7.0f});
+			myEngine.mvMatrixStack.addRotation(M_PI/2-M_PI/16,{1,0,0});
+			myEngine.mvMatrixStack.addHomothety({0.5f,0.5f,0.5f});
+			myEngine.updateMvMatrix();
+			disque.drawShape();
+		myEngine.mvMatrixStack.popMatrix();
+		myEngine.updateMvMatrix();
+	//FENETRE 2
+		myEngine.setFlatColor(1, 0.224, 0.251);
+		myEngine.mvMatrixStack.pushMatrix();
+			myEngine.mvMatrixStack.addTranslation({1.f,10.5f,7.0f});
+			myEngine.mvMatrixStack.addRotation(M_PI/2-M_PI/16,{1,0,0});
+			myEngine.mvMatrixStack.addHomothety({0.5f,0.5f,0.5f});
+			myEngine.updateMvMatrix();
+			disque.drawShape();
+			glassTexture.detachTexture();
+			myEngine.activateTexturing(false);
+		myEngine.mvMatrixStack.popMatrix();
+		myEngine.updateMvMatrix();
 		
 	//SOL DU WAGON
-	//myEngine.setFlatColor(0.149, 0.224, 0.251);
+	myEngine.setFlatColor(0.149, 0.224, 0.251);
 	myEngine.mvMatrixStack.pushMatrix();
 		myEngine.mvMatrixStack.addTranslation({0.f,11.f,2.f});
 		myEngine.mvMatrixStack.addRotation(-M_PI,{1,0,0});
@@ -454,7 +490,7 @@ myEngine.mvMatrixStack.addHomothety({1.f,1.2f,1.2f});
 	myEngine.updateMvMatrix();
 
 	//BARRIERE GAUCHE
-	//myEngine.setFlatColor(0.149, 0.224, 0.251);
+	myEngine.setFlatColor(0.149, 0.224, 0.251);
 	myEngine.mvMatrixStack.pushMatrix();
 		myEngine.mvMatrixStack.addTranslation({-2.f,11.5f,5.5f});
 		myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
@@ -466,7 +502,7 @@ myEngine.mvMatrixStack.addHomothety({1.f,1.2f,1.2f});
 	myEngine.updateMvMatrix();
 
 	//BARRIERE DROITE
-	//myEngine.setFlatColor(1.f, 0.67f, 0.20f);
+	myEngine.setFlatColor(0.149, 0.224, 0.251);
 	myEngine.mvMatrixStack.pushMatrix();
 		myEngine.mvMatrixStack.addTranslation({2.f,11.5f,5.5f});
 		myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
@@ -478,21 +514,26 @@ myEngine.mvMatrixStack.addHomothety({1.f,1.2f,1.2f});
 	myEngine.updateMvMatrix();
 
 	//TOIT
-	//BARRIERE DROITE
-	myEngine.setFlatColor(0.255, 0.157, 0.157f);
+	//myEngine.setFlatColor(0.255, 0.157, 0.157f);
+	myEngine.activateTexturing(true);
+	 wood2Texture.attachTexture();
+
 	myEngine.mvMatrixStack.pushMatrix();
-		myEngine.mvMatrixStack.addTranslation({0.f,12.2f,8.7f});
+		myEngine.mvMatrixStack.addTranslation({0.f,11.8f,8.7f});
 		myEngine.mvMatrixStack.addRotation(-M_PI/16,{1,0,0});
-		myEngine.mvMatrixStack.addHomothety({4.5f,2.3f,1.f}); //(x,z,y)
+		myEngine.mvMatrixStack.addHomothety({4.6f,2.9f,1.3f}); //(x,z,y)
 		myEngine.updateMvMatrix();
 		cube->draw();
+		wood2Texture.detachTexture();
+		myEngine.activateTexturing(false);
 	myEngine.mvMatrixStack.popMatrix();
 	myEngine.updateMvMatrix();
 myEngine.mvMatrixStack.popMatrix();
 myEngine.updateMvMatrix();
 
 //BARRE ROUES A DROITE
-myEngine.setFlatColor(0.925, 0.745, 0.286);
+myEngine.activateTexturing(true);
+ goldTexture.attachTexture();
 	myEngine.mvMatrixStack.pushMatrix();
 		myEngine.mvMatrixStack.addTranslation({3.5f,7.f,3.5f});
 		myEngine.mvMatrixStack.addHomothety({0.3f,7.f,0.7f}); //(x,z,y)
@@ -508,11 +549,15 @@ myEngine.setFlatColor(0.925, 0.745, 0.286);
 		myEngine.mvMatrixStack.addHomothety({0.3f,7.f,0.7f}); //(x,z,y)
 		myEngine.updateMvMatrix();
 		cube->draw();
+		goldTexture.detachTexture();
+		myEngine.activateTexturing(false);
+
+
 myEngine.mvMatrixStack.popMatrix();
 	myEngine.updateMvMatrix();
 
-//REMABRDE VERTICALE DROITE ET GAUCHE
-myEngine.setFlatColor(0.925, 0.745, 0.286);
+//REMABRDE VERTICALE DROITE
+myEngine.setFlatColor(0.149, 0.224, 0.251);
 	myEngine.mvMatrixStack.pushMatrix();
 		myEngine.mvMatrixStack.addTranslation({2.f,11.f,3.5f});
 		myEngine.mvMatrixStack.addHomothety({0.5f,3.f,2.5f}); //(x,z,y)
@@ -520,5 +565,16 @@ myEngine.setFlatColor(0.925, 0.745, 0.286);
 		cube->draw();
 myEngine.mvMatrixStack.popMatrix();
 	myEngine.updateMvMatrix();
+
+//GAUCHE
+	myEngine.mvMatrixStack.pushMatrix();
+		myEngine.mvMatrixStack.addTranslation({-2.f,11.f,3.5f});
+		myEngine.mvMatrixStack.addHomothety({0.5f,3.f,2.5f}); //(x,z,y)
+		myEngine.updateMvMatrix();
+		cube->draw();
+myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
+
+
 
 }
