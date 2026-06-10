@@ -8,6 +8,7 @@ StandardMesh* body2;
 GLBI_Convex_2D_Shape disque2{3};
 IndexedMesh* cylindre2;
 IndexedMesh* cube2;
+IndexedMesh* pyramide;
 
  void initGare(){
     body2 = basicCone(10.0f, 4.0f, 2.50f, 50);
@@ -32,6 +33,28 @@ IndexedMesh* cube2;
 	cube2=basicCube(1);
 	cube2-> createVAO();
 
+	//PYRAMIDE
+	 float sommet[] = {
+        -1.f, -1.f, 0.f, //bas gauche S0
+         1.f, -1.f, 0.f, //bas droite S1
+         1.f,  1.f, 0.f, // haut droit S2
+        -1.f,  1.f, 0.f, // heut gauche S3
+         0.f,  0.f, 1.5f// hau pyramide S4
+    };
+//pour relier les points, on cree les faces
+	 unsigned int indices[] = {
+        0,1,2, //face 
+        0,2,3,
+        0,1,4,
+        1,2,4,
+        2,3,4,
+        3,0,4
+    };
+
+	pyramide = new IndexedMesh(6, 5, GL_TRIANGLES);
+    pyramide->addOneBuffer(0, 3, sommet, "coordinates", true); //coordinate trouvé d'après source
+    pyramide->addIndexBuffer(indices, true);
+    pyramide->createVAO();
     
 
  }
@@ -58,6 +81,7 @@ IndexedMesh* cube2;
 
 		
  }
+ 
 
  void drawGare(){
 	myEngine.setFlatColor(0.118, 0.118, 0.118);
@@ -172,6 +196,20 @@ IndexedMesh* cube2;
 				myEngine.updateMvMatrix();
 				cube2->draw();
 				myEngine.mvMatrixStack.popMatrix();
+				myEngine.updateMvMatrix();
 
-		//panneau
+		//PYRAMIDES TOIT
+		myEngine.setFlatColor(1, 1, 0.118);
+		for (int i=0; i<=7; i++) {
+				myEngine.mvMatrixStack.pushMatrix();
+					myEngine.mvMatrixStack.addTranslation({-2.f, i*20.f/8.f-8.5f, 7.f});
+					myEngine.mvMatrixStack.addHomothety({1,1.5,0.8});
+					myEngine.updateMvMatrix();
+					pyramide->draw();
+				myEngine.mvMatrixStack.popMatrix();
+				myEngine.updateMvMatrix();
+			}
+		//PETIT PANNEAU
+
+	
  } 
