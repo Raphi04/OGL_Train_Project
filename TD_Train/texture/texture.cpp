@@ -1,10 +1,14 @@
 #include "texture.hpp"
-
+///////////////////////////
+// CHANGER LES CHEMINS POUR LES TEXTURE.PNG
+////////////////////////////////////////
 #define STB_IMAGE_IMPLEMENTATION
 #include "tools/stb_image.h"
 
 GLBI_Texture woodTexture;
 GLBI_Texture metalTexture;
+GLBI_Texture bois_gareTexture;
+GLBI_Texture acier_gareTexture;
 
 void createTexture() {
     stbi_set_flip_vertically_on_load(true);
@@ -44,5 +48,48 @@ void createTexture() {
 	metalTexture.loadImage(metalWidth, metalHeight, metalChannel, metal);
 
 	stbi_image_free(metal);
+
+	////////////////////////////////////////////////////BOIS TRAIN
+
+    // Wood Texture
+    int boisWidth {};
+	int boisHeight {};
+	int boisChannel {};
+
+    unsigned char* bois_gare { stbi_load("../TD_Train/texture/bois_gare.png", &boisWidth, &boisHeight, &boisChannel, 0) };
+
+	if(bois_gare == NULL) {
+		std::cout << "Le charchement de la texture pour la gare à échoué" << std::endl;
+	}
+
+    bois_gareTexture.createTexture();
+	bois_gareTexture.attachTexture();
+	bois_gareTexture.setParameters(GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	bois_gareTexture.loadImage(boisWidth, boisHeight, boisChannel, bois_gare);
+
+	stbi_image_free(bois_gare);
+
+	///////////////////////ACIER TRAIN
+
+	////////////////////////////////////////////////////BOIS TRAIN
+	
+    // Wood Texture
+    int acierWidth {};
+	int acierHeight {};
+	int acierChannel {};
+
+    unsigned char* acier_gare { stbi_load("../TD_Train/texture/acier_gare.png", &acierWidth, &acierHeight, &acierChannel, 0) };
+
+	if(bois_gare == NULL) {
+		std::cout << "Le charchement de la texture pour l'acier gare à échoué" << std::endl;
+	}
+
+    acier_gareTexture.createTexture();
+	acier_gareTexture.attachTexture();
+	acier_gareTexture.setParameters(GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	acier_gareTexture.loadImage(acierWidth, acierHeight, acierChannel, acier_gare);
+
+	stbi_image_free(acier_gare);
+
 
 }

@@ -9,10 +9,14 @@ GLBI_Convex_2D_Shape disque2{3};
 IndexedMesh* cylindre2;
 IndexedMesh* cube2;
 IndexedMesh* pyramide;
+StandardMesh* a_frame;
 
  void initGare(){
-    body2 = basicCone(10.0f, 4.0f, 2.50f, 50);
-	body2->createVAO();
+	 createTexture();
+	
+     body2 = basicCone(10.0f, 4.0f, 2.50f, 50);
+	 body2->createVAO();
+	 
 	//DISQUE
  	std::vector<float> pts_disque;
  //remplir tab ac points nécéessaire
@@ -81,10 +85,11 @@ IndexedMesh* pyramide;
 
 		
  }
- 
+
+
 
  void drawGare(){
-	myEngine.setFlatColor(0.118, 0.118, 0.118);
+	myEngine.setFlatColor(0.435, 0.537, 0.384);
 	myEngine.mvMatrixStack.pushMatrix();
 			myEngine.mvMatrixStack.addTranslation({0.0f,0.f,0.5f});
 			// myEngine.mvMatrixStack.addRotation(-M_PI/16,{1,0,0});
@@ -96,9 +101,10 @@ IndexedMesh* pyramide;
 			myEngine.mvMatrixStack.addHomothety({10.f,20.f,0.3f});
 			myEngine.updateMvMatrix();
 			cube2->draw();
+			
 		
 			//couche 2
-			myEngine.setFlatColor(1, 0, 0.118);
+			myEngine.setFlatColor(0.231, 0.22, 0.133);
 			myEngine.mvMatrixStack.addTranslation({0.f,0.f,1.2f});
 			myEngine.mvMatrixStack.addHomothety({1.f,1,1.5f});
 			myEngine.updateMvMatrix();
@@ -109,7 +115,11 @@ IndexedMesh* pyramide;
 			myEngine.mvMatrixStack.addTranslation({0.f,0.f,0.7f});
 			myEngine.mvMatrixStack.addHomothety({1.f,1,0.3f});
 			myEngine.updateMvMatrix();
+			 myEngine.activateTexturing(true);
+	 		bois_gareTexture.attachTexture();
 			cube2->draw();
+			bois_gareTexture.detachTexture();
+			myEngine.activateTexturing(false);
 		myEngine.mvMatrixStack.popMatrix();
 		myEngine.updateMvMatrix();
 
@@ -117,6 +127,7 @@ IndexedMesh* pyramide;
 
 		myEngine.setFlatColor(0.431, 0.404, 0.38);
 			for (int i=0; i<=10; i++) {
+				 myEngine.setFlatColor( 0.631, 0.608, 0.569);
 				myEngine.mvMatrixStack.pushMatrix();
 				myEngine.mvMatrixStack.addTranslation({-5.f, i*20.f/10.f-10.f, 1.f});
 				myEngine.mvMatrixStack.addHomothety({0.5,0.5,3});
@@ -125,16 +136,21 @@ IndexedMesh* pyramide;
 				myEngine.mvMatrixStack.popMatrix();
 
 				//rembarde
+				myEngine.activateTexturing(true);
+	 			acier_gareTexture.attachTexture();
 				myEngine.mvMatrixStack.pushMatrix();
-				myEngine.mvMatrixStack.addTranslation({-5.f, i*20.f/10.f-10.f, 2.5f});
-				myEngine.mvMatrixStack.addHomothety({1.f,2.f,0.3});
-				myEngine.updateMvMatrix();
-				cube2->draw();
+					myEngine.mvMatrixStack.addTranslation({-5.f, i*20.f/10.f-10.f, 2.5f});
+					myEngine.mvMatrixStack.addHomothety({1.f,2.f,0.3});
+					myEngine.updateMvMatrix();
+					cube2->draw();
+					acier_gareTexture.detachTexture();
+					myEngine.activateTexturing(false);
 				myEngine.mvMatrixStack.popMatrix();
 			}
 
 		//poteaux bois gauche
 			for (int i=0; i<=3; i++) {
+				 myEngine.setFlatColor( 0.631, 0.608, 0.569);
 				myEngine.mvMatrixStack.pushMatrix();
 				myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,-10.f, 1.f});
 				myEngine.mvMatrixStack.addHomothety({0.5,0.5,3});
@@ -143,32 +159,40 @@ IndexedMesh* pyramide;
 				myEngine.mvMatrixStack.popMatrix();
 
 				//rembarde
+				myEngine.activateTexturing(true);
+	 			acier_gareTexture.attachTexture();
 				myEngine.mvMatrixStack.pushMatrix();
-				myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,-10.f, 2.5f});
-				myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
-				myEngine.mvMatrixStack.addHomothety({1.f,2.f,0.3});
-				myEngine.updateMvMatrix();
-				cube2->draw();
+					myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,-10.f, 2.5f});
+					myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
+					myEngine.mvMatrixStack.addHomothety({1.f,2.f,0.3});
+					myEngine.updateMvMatrix();
+					cube2->draw();
+					acier_gareTexture.detachTexture();
+				myEngine.activateTexturing(false);
 				myEngine.mvMatrixStack.popMatrix();
 			}
 
 		//poteau bois droite
 			for (int i=0; i<=3; i++) {
+				 myEngine.setFlatColor( 0.631, 0.608, 0.569);
 				myEngine.mvMatrixStack.pushMatrix();
-				myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,10.f, 1.f});
-				myEngine.mvMatrixStack.addHomothety({0.5,0.5,3});
-				myEngine.updateMvMatrix();
-				cube2->draw();
+					myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,10.f, 1.f});
+					myEngine.mvMatrixStack.addHomothety({0.5,0.5,3});
+					myEngine.updateMvMatrix();
+					cube2->draw();
 				myEngine.mvMatrixStack.popMatrix();
 
 				//rembarde
-
+				myEngine.activateTexturing(true);
+	 			acier_gareTexture.attachTexture();
 				myEngine.mvMatrixStack.pushMatrix();
-				myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,10.f, 2.5f});
-				myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
-				myEngine.mvMatrixStack.addHomothety({1.f,2.f,0.3});
-				myEngine.updateMvMatrix();
-				cube2->draw();
+					myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,10.f, 2.5f});
+					myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
+					myEngine.mvMatrixStack.addHomothety({1.f,2.f,0.3});
+					myEngine.updateMvMatrix();
+					cube2->draw();
+					acier_gareTexture.detachTexture();
+				myEngine.activateTexturing(false);
 				myEngine.mvMatrixStack.popMatrix();
 
 			}
@@ -176,6 +200,8 @@ IndexedMesh* pyramide;
 			myEngine.mvMatrixStack.pushMatrix();
 				myEngine.mvMatrixStack.addTranslation({-4,-8.5f, 0});
 				myEngine.updateMvMatrix();
+				myEngine.activateTexturing(true);
+	 			bois_gareTexture.attachTexture();
 				drawToit();
 			myEngine.mvMatrixStack.popMatrix();
 			myEngine.updateMvMatrix();
@@ -195,20 +221,27 @@ IndexedMesh* pyramide;
 				myEngine.mvMatrixStack.addHomothety({5.f,20.f,0.4});
 				myEngine.updateMvMatrix();
 				cube2->draw();
+				bois_gareTexture.detachTexture();
+			myEngine.activateTexturing(false);
 				myEngine.mvMatrixStack.popMatrix();
 				myEngine.updateMvMatrix();
 
 		//PYRAMIDES TOIT
 		myEngine.setFlatColor(1, 1, 0.118);
+		myEngine.activateTexturing(true);
+	 	acier_gareTexture.attachTexture();
 		for (int i=0; i<=7; i++) {
 				myEngine.mvMatrixStack.pushMatrix();
 					myEngine.mvMatrixStack.addTranslation({-2.f, i*20.f/8.f-8.5f, 7.f});
 					myEngine.mvMatrixStack.addHomothety({1,1.5,0.8});
 					myEngine.updateMvMatrix();
 					pyramide->draw();
+					
 				myEngine.mvMatrixStack.popMatrix();
 				myEngine.updateMvMatrix();
 			}
+			acier_gareTexture.detachTexture();
+			myEngine.activateTexturing(false);
 		//PETIT PANNEAU
 
 	
