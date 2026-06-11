@@ -5,6 +5,7 @@
 
 GLBI_Texture woodTexture;
 GLBI_Texture metalTexture;
+GLBI_Texture grassTexture;
 
 void createTexture() {
     stbi_set_flip_vertically_on_load(true);
@@ -45,4 +46,21 @@ void createTexture() {
 
 	stbi_image_free(metal);
 
+	// Grass Texture
+    int grassWidth {};
+	int grassHeight {};
+	int grassChannel {};
+
+    unsigned char* grass { stbi_load("../assets/textures/grass.png", &grassWidth, &grassHeight, &grassChannel, 0) };
+
+	if(grass == NULL) {
+		std::cout << "Le charchement de la texture grass à échoué" << std::endl;
+	}
+
+    grassTexture.createTexture();
+	grassTexture.attachTexture();
+	grassTexture.setParameters(GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	grassTexture.loadImage(grassWidth, grassHeight, grassChannel, grass);
+
+	stbi_image_free(grass);
 }

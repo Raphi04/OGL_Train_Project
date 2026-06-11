@@ -6,8 +6,13 @@
 #include "terrain/terrain.hpp"
 #include "train/train.hpp"
 
+#include "lumiere/lumiere.hpp"
+
 /* Initialisation des formes de la scèene */
 void initScene() {
+	// Initialiser les lumières
+	initLights();
+
 	// Active les textures
 	glActiveTexture(GL_TEXTURE0);
 	createTexture();
@@ -30,10 +35,13 @@ void initScene() {
 
 /* Dessin de la scène */
 void drawScene() {
-	glPointSize(10.0);
-	
+
 	/* Dessin du repère 3D */
 	drawRepere();
+
+	if(lightToggle) {
+		myEngine.switchToPhongShading();
+	}
 
 	/* Dessin de terrain */
 	drawTerrain();
@@ -81,6 +89,10 @@ void drawScene() {
 
 	myEngine.mvMatrixStack.popMatrix();
 	myEngine.updateMvMatrix();
+
+	if(lightToggle) {
+		myEngine.switchToFlatShading();
+	}
 }
 
 

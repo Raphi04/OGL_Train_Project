@@ -4,6 +4,20 @@ Reproduction de la locomotive des dieux du jeu **_The Legend of Zelda: Spirit Tr
 
 ![Jaquette The Legend of Zelda: Spirit Tracks](./assets/documentation/zelda_spirit_track.jpg)
 
+## **Lancer le code**
+
+Pour lancer le code il faut aller dans le dossier **bin** :
+
+```
+cd bin
+```
+
+Pour lancer le **.exe**, il faut faire la commande suivante :
+
+```
+./TD_Train_main json.json
+```
+
 ## **Commandes utilisateurs**
 
 ### **[ECHAP]** Quitter la fenêtre
@@ -12,15 +26,21 @@ L'appuie de cette touche fermera la fenêtre
 
 ---
 
-### **[L]** Mode fillaire
+### **[L]** Mode lumière
 
-L'appuie de cette touche activera ou désactivera la vision fillaire de la scène.
+L'appuie de cette touche activera ou désactivera la lumière réaliste de la scène.
 
 ---
 
 ### **[G]** Afficher / Retirer la grille du terrain
 
 L'appuie de cette touche activera ou désactivera l'affichage de la grille du terrain.
+
+---
+
+### **[C]** Changer de Caméra _(Orbital, FPS et Roof)_
+
+L'appuie de cette touche permettra de changer la caméra.
 
 ---
 
@@ -42,9 +62,15 @@ L'appuie de ces touches permettra de faire monter ou descendre la caméra dans l
 
 ---
 
-### **[C]** Changer de Caméra _(Orbital, FPS et Roof)_
+### **[Souris]** Permet de tourner la caméra dans la scène
 
-L'appuie de cette touche permettra de changer la caméra.
+Bouger la souris permet de déplacer la souris.
+
+---
+
+### **[G]** Afficher / Retirer la grille du terrain
+
+L'appuie de cette touche permettra d'affciher ou de retirer la grille du terrain.
 
 ## **Implémentation**
 
@@ -91,3 +117,19 @@ set(CMAKE_COLOR_MAKEFILE ON)
 ```
 
 Cela permet d'aller chercher le dossier nohlmann dans third_party
+
+### Modification de InitShape()
+
+Pour ajouter des normals et des uvs maps au **GLBI_Convex_2D_Shape**, Nous avons modifié le code de la fonction InitShape() en nous inspirant des formes primitives.
+
+Ajout des normals :
+
+```
+        shape.addOneBuffer(1, 3, normals.data(), "Normals", false);
+```
+
+Ajout des uvs :
+
+```
+		shape.addOneBuffer(2, 2, uvs.data(), "Uvs", true);
+```
