@@ -18,8 +18,6 @@ GLBI_Convex_2D_Shape curvedRail2Right{3};
 
 IndexedMesh* balast{};
 
-IndexedMesh* cube{};
-
 RailsParams railParams{};
 
 void initStraightRails() {
@@ -108,12 +106,12 @@ void initStraightRails() {
 		0.f, 1.f, 0.f,
 
 		/* Face de Bas */
-		0.f, 0.f, -1.f,
-		0.f, 0.f, -1.f,
-		0.f, 0.f, -1.f,
-		0.f, 0.f, -1.f,
-		0.f, 0.f, -1.f,
-		0.f, 0.f, -1.f,
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
 
 		/* Face du Fond */
 		1.f, 0.f, 0.f,
@@ -331,7 +329,7 @@ void initCurvedRails() {
 		
 		curvedRail1BotNormals.push_back(0.f);	
 		curvedRail1BotNormals.push_back(0.f);	
-		curvedRail1BotNormals.push_back(-1.f);
+		curvedRail1BotNormals.push_back(1.f);
 
 		curvedRail1BotUvs.push_back(0.5 + cos(angle)  / 2);	
 		curvedRail1BotUvs.push_back(0.5 + sin(angle)  / 2);
@@ -429,7 +427,7 @@ void initCurvedRails() {
 		
 		curvedRail2BotNormals.push_back(0.f);	
 		curvedRail2BotNormals.push_back(0.f);	
-		curvedRail2BotNormals.push_back(-1.f);
+		curvedRail2BotNormals.push_back(1.f);
 
 		curvedRail2BotUvs.push_back(0.5 + cos(angle) / 2);	
 		curvedRail2BotUvs.push_back(0.5 + sin(angle) / 2);

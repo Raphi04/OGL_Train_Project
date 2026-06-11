@@ -50,7 +50,7 @@ void drawScene() {
 	drawTerrain();
 
 	// /*dDessin du train*/
-	 //drawTrain();
+	drawTrain();
 	
 	//Dessin gare
 	drawGare();

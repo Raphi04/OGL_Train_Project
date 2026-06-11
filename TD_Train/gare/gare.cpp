@@ -19,14 +19,23 @@ StandardMesh* a_frame;
 	 
 	//DISQUE
  	std::vector<float> pts_disque;
+	std::vector<float> normals_disque;
+ 	std::vector<float> uvs_disque;
+	
  //remplir tab ac points nécéessaire
  	for (int i=0; i<=50; i++){
 		float angle_bis= 2*M_PI*i /50;
 		pts_disque.push_back(cos(angle_bis)); //on garde rayon 1 on fera homotéthie pr rayon de 6
 		pts_disque.push_back(sin(angle_bis));
-		pts_disque.push_back(0.0f);
+		
+		normals_disque.push_back(0.f); //on garde rayon 1 on fera homotéthie pr rayon de 6
+		normals_disque.push_back(0.f);
+		normals_disque.push_back(1.f);
+
+		uvs_disque.push_back(0.5 + 0.5 * cos(angle_bis)); //on garde rayon 1 on fera homotéthie pr rayon de 6
+		uvs_disque.push_back(0.5 + 0.5 * sin(angle_bis));
  }
-	disque2.initShape(pts_disque);
+	disque2.initShape(pts_disque, normals_disque, uvs_disque);
  	disque2.changeNature(GL_TRIANGLE_FAN);
 
 	//CYLINDRE 
@@ -55,8 +64,45 @@ StandardMesh* a_frame;
         3,0,4
     };
 
+	float normals[] = {
+        0.f, 0.f, 1.f, //bas gauche S0
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
+
+		0.f, 0.f, 1.f, //bas gauche S0
+		0.f, 0.f, 1.f,
+		0.f, 0.f, 1.f,
+
+		0.f, -1.f, 0.f, //bas gauche S0
+		0.f, -1.f, 0.f,
+		0.f, -1.f, 0.f,
+
+		1.f, 0.f, 0.f, //bas gauche S0
+		1.f, 0.f, 0.f,
+		1.f, 0.f, 0.f,
+
+		0.f, 1.f, 0.f, //bas gauche S0
+		0.f, 1.f, 0.f,
+		0.f, 1.f, 0.f,
+
+        -1.f, 0.f, 0.f, //bas gauche S0
+		-1.f, 0.f, 0.f,
+		-1.f, 0.f, 0.f,
+    };
+float uvs[] = {
+    // Base (carré)
+    0.f, 0.f,   // S0 (-1, -1)
+    1.f, 0.f,   // S1 ( 1, -1)
+    1.f, 1.f,   // S2 ( 1,  1)
+    0.f, 1.f,   // S3 (-1,  1)
+
+    // Sommet
+    0.5f, 0.5f  // S4 (apex)
+};
 	pyramide = new IndexedMesh(6, 5, GL_TRIANGLES);
     pyramide->addOneBuffer(0, 3, sommet, "coordinates", true); //coordinate trouvé d'après source
+	pyramide->addOneBuffer(1, 3, normals, "normals", true); //coordinate trouvé d'après source
+    pyramide->addOneBuffer(2, 2, uvs, "uvs", true); //coordinate trouvé d'après source
     pyramide->addIndexBuffer(indices, true);
     pyramide->createVAO();
     
@@ -89,8 +135,6 @@ StandardMesh* a_frame;
  void drawStatue(){
 	myEngine.setFlatColor(0.435, 0.537, 1);
 	myEngine.mvMatrixStack.pushMatrix();
-
-
 			myEngine.updateMvMatrix();
 			pyramide->draw();
 		myEngine.mvMatrixStack.popMatrix();
@@ -98,8 +142,7 @@ StandardMesh* a_frame;
 		myEngine.updateMvMatrix();
 		myEngine.mvMatrixStack.pushMatrix();
 			myEngine.mvMatrixStack.addTranslation({0,0,2.2});
-			myEngine.mvMatrixStack.addRotation(-M_PI,{0,1,0});
-			myEngine.mvMatrixStack.addHomothety({1,1,1.4});
+			myEngine.mvMatrixStack.addHomothety({1,1,-1.4});
 			myEngine.updateMvMatrix();
 			pyramide->draw();
 		myEngine.mvMatrixStack.popMatrix();

@@ -28,14 +28,23 @@ void initTrain()
 	body->createVAO();
 	//DISQUE
  	std::vector<float> pts_disque;
- //remplir tab ac points nécéessaire
+ 	std::vector<float> normals_disque;
+ 	std::vector<float> uvs_disque;
+	//remplir tab ac points nécéessaire
  	for (int i=0; i<=50; i++){
 		float angle_bis= 2*M_PI*i /50;
 		pts_disque.push_back(cos(angle_bis)); //on garde rayon 1 on fera homotéthie pr rayon de 6
 		pts_disque.push_back(sin(angle_bis));
 		pts_disque.push_back(0.0f);
+
+		normals_disque.push_back(0.f); //on garde rayon 1 on fera homotéthie pr rayon de 6
+		normals_disque.push_back(0.f);
+		normals_disque.push_back(1.f);
+
+		uvs_disque.push_back(0.5 + 0.5 * cos(angle_bis)); //on garde rayon 1 on fera homotéthie pr rayon de 6
+		uvs_disque.push_back(0.5 + 0.5 * sin(angle_bis));
  }
-	disque.initShape(pts_disque);
+	disque.initShape(pts_disque, normals_disque, uvs_disque);
  	disque.changeNature(GL_TRIANGLE_FAN);
 
 	//CYLINDRE 
