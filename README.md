@@ -133,3 +133,46 @@ Ajout des uvs :
 ```
 		shape.addOneBuffer(2, 2, uvs.data(), "Uvs", true);
 ```
+
+## **Résultats**
+
+### Caméras
+
+Nous avons trois caméras différentes une en plafond, une en fps et une orbital. Pour la caméra fps, nous avons suivis ce tutoriel : [Caméra OpenGl](https://learnopengl.com/Getting-started/Camera).
+
+Orbital :
+![Caméra Orbital](./assets/documentation/orbital.png)
+
+FPS :
+![Caméra FPS](./assets/documentation/fps.png)
+
+Plafond :
+![Caméra Roof](./assets/documentation/roof.png)
+
+---
+
+### Lumière
+
+Nous avons mis 6 lumières dans tous les sens : haut, bas, gauche, droite, avant et arrière
+
+Flat shading :
+![Flat shading](./assets/documentation/flat.png)
+
+Realistic shading :
+![Realistic shading](./assets/documentation/light.png)
+
+---
+
+### Terrain
+
+Pour faire le terrain, nous avons fait un **GLBI_Convex_2D_Shape** sur lequel on applique une texture d'herbe. Nous avons aussi ajouté une grille afin de mieux voir les différentes cases. La taille du terrain peut être modifié dans le json.
+
+![Terrain](./assets/documentation/ground.png)
+
+---
+
+### Rails
+
+Pour faire les rails, nous avons utilisé des **GLBI_Convex_2D_Shape** pour les parties métaliques. Les paramètres des rails peuvent être modifié dans le json.
+
+![Rails](./assets/documentation/rails.png)
