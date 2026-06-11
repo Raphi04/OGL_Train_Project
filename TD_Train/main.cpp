@@ -10,6 +10,8 @@
 #include "camera/camera.hpp"
 #include "draw_scene.hpp"
 
+#include "lumiere/lumiere.hpp"
+
 using namespace glbasimac;
 using namespace STP3D;
 
@@ -47,14 +49,9 @@ void onKey(GLFWwindow* window, int key, int /*scancode*/, int action, int /*mods
 		glfwSetWindowShouldClose(window, GLFW_TRUE);
 	}
 
-	/* Passer au mode de visualisation filaire de la scène */
+	/* Passer au mode de lumière réaliste */
 	if(key == GLFW_KEY_L && action == GLFW_PRESS) {
-		isLineMode = !isLineMode;
-		if(isLineMode) {
-			glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
-		} else {
-			glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
-		}
+		lightToggle = !lightToggle;
 	}
 
 	/* Changer de caméra */

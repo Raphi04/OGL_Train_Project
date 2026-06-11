@@ -21,15 +21,38 @@ On a pris la première option pour simplifier l'algorithme et on fait le décall
 bool showTerrainGrid { false };
 
 void initTerrain() {
-	std::vector<float> terrainShape{
-		   0.0,     0.0, 0.0,
-		 width,     0.0, 0.0,
-		 width,  height, 0.0,
-		   0.0,  height, 0.0,
+	std::vector<float> terrainShape {
+		  0.f,     0.f, 0.f,
+		width,     0.f, 0.f,
+		width,  height, 0.f,
+
+		  0.f,     0.f, 0.f,
+		  0.f,  height, 0.f,
+		width,  height, 0.f,
 	};
 
-	terrain.initShape(terrainShape);
+	std::vector<float> terrainShapeNormals {
+		  0.f, 0.f, 1.f,
+		  0.f, 0.f, 1.f,
+		  0.f, 0.f, 1.f,
+		  0.f, 0.f, 1.f,
+		  0.f, 0.f, 1.f,
+		  0.f, 0.f, 1.f,
+	};
+
+	std::vector<float> terrainShapeUvs {
+		0.f, 0.f,
+		1.f, 0.f,
+		1.f, 1.f,
+
+		0.f, 0.f,
+		0.f, 1.f,
+		1.f, 1.f
+	};
+
+	terrain.initShape(terrainShape, terrainShapeNormals, terrainShapeUvs);
 	terrain.changeNature(GL_TRIANGLE_FAN);
+
 };
 
 void drawTerrain() {
@@ -37,8 +60,13 @@ void drawTerrain() {
 		myEngine.mvMatrixStack.addTranslation({-width / 2.f, -height / 2.f, 0.f});
 		myEngine.updateMvMatrix();
 
-		myEngine.setFlatColor(0.f, (113 / 255.f), (49 / 255.f)); // Couleur herbe
+		myEngine.activateTexturing(true);
+		grassTexture.attachTexture();
+
 		terrain.drawShape();
+
+		grassTexture.detachTexture();
+		myEngine.activateTexturing(false);
 
 	myEngine.mvMatrixStack.popMatrix();
 	myEngine.updateMvMatrix();
@@ -46,6 +74,8 @@ void drawTerrain() {
 
 void initTerrainGrid() {
 	std::vector<float> terrainGridShape{};
+	std::vector<float> terrainGridShapeNormals{};
+	std::vector<float> terrainGridShapeUvs{};
 
 	/* Hauteur de la grille par rapport au terrain */
 	float z { 0.1f }; 
@@ -56,9 +86,23 @@ void initTerrainGrid() {
 		terrainGridShape.push_back(height);
 		terrainGridShape.push_back(z);
 
+		terrainGridShapeNormals.push_back(0.f);
+		terrainGridShapeNormals.push_back(0.f);
+		terrainGridShapeNormals.push_back(1.f);
+
+		terrainGridShapeUvs.push_back(0.f);
+		terrainGridShapeUvs.push_back(0.f);
+
 		terrainGridShape.push_back(x * 10);
 		terrainGridShape.push_back(0);
 		terrainGridShape.push_back(z);
+
+		terrainGridShapeNormals.push_back(0.f);
+		terrainGridShapeNormals.push_back(0.f);
+		terrainGridShapeNormals.push_back(1.f);
+
+		terrainGridShapeUvs.push_back(0.f);
+		terrainGridShapeUvs.push_back(0.f);
 	}
 
 	/* Lignes horizontales */
@@ -67,12 +111,26 @@ void initTerrainGrid() {
 		terrainGridShape.push_back(y * 10);
 		terrainGridShape.push_back(z);
 
+		terrainGridShapeNormals.push_back(0.f);
+		terrainGridShapeNormals.push_back(0.f);
+		terrainGridShapeNormals.push_back(1.f);
+		
+		terrainGridShapeUvs.push_back(0.f);
+		terrainGridShapeUvs.push_back(0.f);
+
 		terrainGridShape.push_back(width);
 		terrainGridShape.push_back(y * 10);
 		terrainGridShape.push_back(z);
+
+		terrainGridShapeNormals.push_back(0.f);
+		terrainGridShapeNormals.push_back(0.f);
+		terrainGridShapeNormals.push_back(1.f);
+
+		terrainGridShapeUvs.push_back(0.f);
+		terrainGridShapeUvs.push_back(0.f);
 	}
 
-	terrainGrid.initShape(terrainGridShape);
+	terrainGrid.initShape(terrainGridShape, terrainGridShapeNormals, terrainGridShapeUvs);
 	terrainGrid.changeNature(GL_LINES);
 }
 

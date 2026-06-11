@@ -15,6 +15,7 @@ GLBI_Texture goldTexture;
 GLBI_Texture wood2Texture;
 GLBI_Texture glassTexture;
 GLBI_Texture rockTexture;
+GLBI_Texture grassTexture;
 
 void createTexture() {
     stbi_set_flip_vertically_on_load(true);
@@ -244,4 +245,21 @@ rockTexture.loadImage(rockWidth, rockHeight, rockChannel, rock_texture);
 stbi_image_free(rock_texture);
 
 
+	// Grass Texture
+    int grassWidth {};
+	int grassHeight {};
+	int grassChannel {};
+
+    unsigned char* grass { stbi_load("../assets/textures/grass.png", &grassWidth, &grassHeight, &grassChannel, 0) };
+
+	if(grass == NULL) {
+		std::cout << "Le charchement de la texture grass à échoué" << std::endl;
+	}
+
+    grassTexture.createTexture();
+	grassTexture.attachTexture();
+	grassTexture.setParameters(GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	grassTexture.loadImage(grassWidth, grassHeight, grassChannel, grass);
+
+	stbi_image_free(grass);
 }

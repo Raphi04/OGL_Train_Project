@@ -12,5 +12,6 @@ extern GLBI_Texture goldTexture;
 extern GLBI_Texture wood2Texture;
 extern GLBI_Texture glassTexture;
 extern GLBI_Texture rockTexture;
+extern GLBI_Texture grassTexture;
 
 void createTexture();
