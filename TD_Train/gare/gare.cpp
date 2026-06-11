@@ -86,9 +86,51 @@ StandardMesh* a_frame;
 		
  }
 
+ void drawStatue(){
+	myEngine.setFlatColor(0.435, 0.537, 1);
+	myEngine.mvMatrixStack.pushMatrix();
+
+
+			myEngine.updateMvMatrix();
+			pyramide->draw();
+		myEngine.mvMatrixStack.popMatrix();
+
+		myEngine.updateMvMatrix();
+		myEngine.mvMatrixStack.pushMatrix();
+			myEngine.mvMatrixStack.addTranslation({0,0,2.2});
+			myEngine.mvMatrixStack.addRotation(-M_PI,{0,1,0});
+			myEngine.mvMatrixStack.addHomothety({1,1,1.4});
+			myEngine.updateMvMatrix();
+			pyramide->draw();
+		myEngine.mvMatrixStack.popMatrix();
+
+		myEngine.updateMvMatrix();
+		myEngine.mvMatrixStack.pushMatrix();
+			myEngine.mvMatrixStack.addTranslation({0,0,2.1});
+			//myEngine.mvMatrixStack.addRotation(-M_PI,{0,1,0});
+			myEngine.mvMatrixStack.addHomothety({1,1,1.6});
+			myEngine.updateMvMatrix();
+			pyramide->draw();
+		myEngine.mvMatrixStack.popMatrix();
+		myEngine.updateMvMatrix();
+
+		myEngine.mvMatrixStack.pushMatrix();
+			myEngine.mvMatrixStack.addTranslation({0,0,4.f});
+			myEngine.mvMatrixStack.addRotation(-M_PI/10,{0,1,0});
+			myEngine.mvMatrixStack.addRotation(-M_PI/10,{1,0,0});
+			myEngine.mvMatrixStack.addHomothety({0.6,0.6,1.4});
+			myEngine.updateMvMatrix();
+			pyramide->draw();
+		myEngine.mvMatrixStack.popMatrix();
+		myEngine.updateMvMatrix();
+
+
+ }
+
 
 
  void drawGare(){
+	
 	myEngine.setFlatColor(0.435, 0.537, 0.384);
 	myEngine.mvMatrixStack.pushMatrix();
 			myEngine.mvMatrixStack.addTranslation({0.0f,0.f,0.5f});
@@ -242,7 +284,35 @@ StandardMesh* a_frame;
 			}
 			acier_gareTexture.detachTexture();
 			myEngine.activateTexturing(false);
-		//PETIT PANNEAU
+
+		//STATUE 1
+			myEngine.activateTexturing(true);
+			rockTexture.attachTexture();
+		myEngine.mvMatrixStack.pushMatrix();
+					myEngine.mvMatrixStack.addTranslation({3.5f,8.7,0.5f});
+					myEngine.mvMatrixStack.addRotation(M_PI,{0,0,1});
+					myEngine.mvMatrixStack.addHomothety({0.9,0.9,0.9});
+					myEngine.updateMvMatrix();
+					drawStatue();
+					
+				myEngine.mvMatrixStack.popMatrix();
+				myEngine.updateMvMatrix();
+		
+		//STATUE 2
+
+		myEngine.mvMatrixStack.pushMatrix();
+					myEngine.mvMatrixStack.addTranslation({3.5f,-8.7,0.5f});
+					myEngine.mvMatrixStack.addRotation(-M_PI,{0,0,1});
+					myEngine.mvMatrixStack.addHomothety({0.9,0.9,0.9});
+					myEngine.updateMvMatrix();
+					drawStatue();
+				rockTexture.detachTexture();
+				myEngine.activateTexturing(false);
+					
+				myEngine.mvMatrixStack.popMatrix();
+				myEngine.updateMvMatrix();
+		
+
 
 	
  } 

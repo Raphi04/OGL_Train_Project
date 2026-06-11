@@ -14,6 +14,7 @@ GLBI_Texture pipeLogoTexture;
 GLBI_Texture goldTexture;
 GLBI_Texture wood2Texture;
 GLBI_Texture glassTexture;
+GLBI_Texture rockTexture;
 
 void createTexture() {
     stbi_set_flip_vertically_on_load(true);
@@ -216,6 +217,31 @@ glassTexture.setParameters(GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 glassTexture.loadImage(glassWidth, glassHeight, glassChannel, glass_texture);
 
 stbi_image_free(glass_texture);
+
+// ROCK TEXTURE
+int rockWidth {};
+int rockHeight {};
+int rockChannel {};
+
+unsigned char* rock_texture {
+    stbi_load("../TD_Train/texture/rock.jpg",
+              &rockWidth,
+              &rockHeight,
+              &rockChannel,
+              0)
+};
+
+if(rock_texture == NULL) {
+    std::cout << "Le chargement de la texture rock a échoué" << std::endl;
+}
+
+rockTexture.createTexture();
+rockTexture.attachTexture();
+rockTexture.setParameters(GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+rockTexture.loadImage(rockWidth, rockHeight, rockChannel, rock_texture);
+
+stbi_image_free(rock_texture);
 
 
 }

@@ -42,10 +42,10 @@ void drawScene() {
 	drawTerrain();
 
 	// /*dDessin du train*/
-	 drawTrain();
+	 //drawTrain();
 	
 	//Dessin gare
-	// drawGare();
+	drawGare();
 
 	/* Dessin de la grille du terrain*/
 	if(showTerrainGrid) {
@@ -53,41 +53,41 @@ void drawScene() {
 	}
 
 
-	/* Dessin des éléments de la scène */
-	myEngine.mvMatrixStack.pushMatrix();
+	// /* Dessin des éléments de la scène */
+	// myEngine.mvMatrixStack.pushMatrix();
 
-		myEngine.mvMatrixStack.addTranslation({-sceneComposition.terrainWidth / 2, -sceneComposition.terrainHeight / 2, 0.f});
-		myEngine.updateMvMatrix();
+	// 	myEngine.mvMatrixStack.addTranslation({-sceneComposition.terrainWidth / 2, -sceneComposition.terrainHeight / 2, 0.f});
+	// 	myEngine.updateMvMatrix();
 
-		float translationX {};
-		float translationY {};
-		float rotation {};
+	// 	float translationX {};
+	// 	float translationY {};
+	// 	float rotation {};
 
-		for(SceneElement sceneElement : sceneComposition.sceneElements) {
-			translationX = sceneElement.x * 10;
-			translationY = sceneElement.y * 10;
-			rotation = M_PI * sceneElement.rotation / 180;
+	// 	for(SceneElement sceneElement : sceneComposition.sceneElements) {
+	// 		translationX = sceneElement.x * 10;
+	// 		translationY = sceneElement.y * 10;
+	// 		rotation = M_PI * sceneElement.rotation / 180;
 
-			myEngine.mvMatrixStack.pushMatrix();
+	// 		myEngine.mvMatrixStack.pushMatrix();
 
-				myEngine.mvMatrixStack.addTranslation({translationX + 5, translationY + 5, 0.f});
-				myEngine.mvMatrixStack.addRotation(rotation, {0.f, 0.f, 1.f});
-				myEngine.updateMvMatrix();
+	// 			myEngine.mvMatrixStack.addTranslation({translationX + 5, translationY + 5, 0.f});
+	// 			myEngine.mvMatrixStack.addRotation(rotation, {0.f, 0.f, 1.f});
+	// 			myEngine.updateMvMatrix();
 
-				if(sceneElement.elementType == Element::StraightRail) {
-					drawStraightRails();
-				}
+	// 			if(sceneElement.elementType == Element::StraightRail) {
+	// 				drawStraightRails();
+	// 			}
 
-				if(sceneElement.elementType == Element::CurvedRail) {
-					drawCurvedRails();
-				}
+	// 			if(sceneElement.elementType == Element::CurvedRail) {
+	// 				drawCurvedRails();
+	// 			}
 
-			myEngine.mvMatrixStack.popMatrix();
-			myEngine.updateMvMatrix();
-		}
+	// 		myEngine.mvMatrixStack.popMatrix();
+	// 		myEngine.updateMvMatrix();
+	// 	}
 
-	myEngine.mvMatrixStack.popMatrix();
-	myEngine.updateMvMatrix();
+	// myEngine.mvMatrixStack.popMatrix();
+	// myEngine.updateMvMatrix();
 }
 
 

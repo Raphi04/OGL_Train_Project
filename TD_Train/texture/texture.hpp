@@ -11,5 +11,6 @@ extern GLBI_Texture pipeLogoTexture;
 extern GLBI_Texture goldTexture;
 extern GLBI_Texture wood2Texture;
 extern GLBI_Texture glassTexture;
+extern GLBI_Texture rockTexture;
 
 void createTexture();
