@@ -64,12 +64,17 @@ void onKey(GLFWwindow* window, int key, int /*scancode*/, int action, int /*mods
 		showTerrainGrid = !showTerrainGrid;
 	}
 
+	/* Klaxonner */
+	if(key == GLFW_KEY_K && action == GLFW_PRESS) {
+		playKlaxon();
+	}
+
 	/* Gestion des mouvements de la caméra */
 	cameraMovement(key, action);
 }
 
 /* Fonction de callback du mouvement de la souris */
-void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
+void mouse_callback(GLFWwindow* /*window*/, double xpos, double ypos) {
 	if(selectedCamera == 1) {
 		cameraAim(xpos, ypos);
 	}

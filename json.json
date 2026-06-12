@@ -1,7 +1,11 @@
 {
   "grid_width": 100,
   "grid_height": 150,
-  "origin": [1, 0],
+
+  "train": [5, 7],
+
+  "gare": [5, 8, -90],
+
   "path": [
     [1, 1],
     [2, 1],
@@ -69,6 +73,8 @@
 
     [1, 2]
   ],
+
+  "cows": [[0, 0, 90]],
 
   "railsParams": {
     "rail_size": 0.5,

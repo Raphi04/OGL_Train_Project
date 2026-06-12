@@ -174,188 +174,198 @@ float uvs[] = {
 
  void drawGare(){
 	
-	myEngine.setFlatColor(0.435, 0.537, 0.384);
 	myEngine.mvMatrixStack.pushMatrix();
+		myEngine.mvMatrixStack.addHomothety({0.5f, 0.5f, 1.f});
+		myEngine.updateMvMatrix();
+
+		myEngine.setFlatColor(0.435, 0.537, 0.384);
+
+		myEngine.mvMatrixStack.pushMatrix();
 			myEngine.mvMatrixStack.addTranslation({0.0f,0.f,0.5f});
 			// myEngine.mvMatrixStack.addRotation(-M_PI/16,{1,0,0});
 			// myEngine.mvMatrixStack.addHomothety({1.f,0.8f,1.f});
-		//BASE GARE
-
-		myEngine.mvMatrixStack.pushMatrix();
-			//couche 1
-			myEngine.mvMatrixStack.addHomothety({10.f,20.f,0.3f});
-			myEngine.updateMvMatrix();
-			cube2->draw();
 			
-		
-			//couche 2
-			myEngine.setFlatColor(0.231, 0.22, 0.133);
-			myEngine.mvMatrixStack.addTranslation({0.f,0.f,1.2f});
-			myEngine.mvMatrixStack.addHomothety({1.f,1,1.5f});
-			myEngine.updateMvMatrix();
-			cube2->draw();
+			//BASE GARE
+			myEngine.mvMatrixStack.pushMatrix();
+				//couche 1
+				myEngine.mvMatrixStack.addHomothety({10.f,20.f,0.3f});
+				myEngine.updateMvMatrix();
+				
+				cube2->draw();
+			
+				//couche 2
+				myEngine.setFlatColor(0.231, 0.22, 0.133);
+				myEngine.mvMatrixStack.addTranslation({0.f,0.f,1.2f});
+				myEngine.mvMatrixStack.addHomothety({1.f,1,1.5f});
+				myEngine.updateMvMatrix();
+				cube2->draw();
 
-		 	//couche 3
-			myEngine.setFlatColor(0, 1, 0.118);
-			myEngine.mvMatrixStack.addTranslation({0.f,0.f,0.7f});
-			myEngine.mvMatrixStack.addHomothety({1.f,1,0.3f});
-			myEngine.updateMvMatrix();
-			 myEngine.activateTexturing(true);
-	 		bois_gareTexture.attachTexture();
-			cube2->draw();
-			bois_gareTexture.detachTexture();
-			myEngine.activateTexturing(false);
+				//couche 3
+				myEngine.setFlatColor(0, 1, 0.118);
+				myEngine.mvMatrixStack.addTranslation({0.f,0.f,0.7f});
+				myEngine.mvMatrixStack.addHomothety({1.f,1,0.3f});
+				myEngine.updateMvMatrix();
+				myEngine.activateTexturing(true);
+				bois_gareTexture.attachTexture();
+				cube2->draw();
+				bois_gareTexture.detachTexture();
+				myEngine.activateTexturing(false);
 		myEngine.mvMatrixStack.popMatrix();
 		myEngine.updateMvMatrix();
 
 		//poteaux bois fond
 
 		myEngine.setFlatColor(0.431, 0.404, 0.38);
-			for (int i=0; i<=10; i++) {
-				 myEngine.setFlatColor( 0.631, 0.608, 0.569);
-				myEngine.mvMatrixStack.pushMatrix();
+		for (int i=0; i<=10; i++) {
+			myEngine.setFlatColor( 0.631, 0.608, 0.569);
+			myEngine.mvMatrixStack.pushMatrix();
+
 				myEngine.mvMatrixStack.addTranslation({-5.f, i*20.f/10.f-10.f, 1.f});
 				myEngine.mvMatrixStack.addHomothety({0.5,0.5,3});
 				myEngine.updateMvMatrix();
 				cube2->draw();
-				myEngine.mvMatrixStack.popMatrix();
 
-				//rembarde
-				myEngine.activateTexturing(true);
-	 			acier_gareTexture.attachTexture();
-				myEngine.mvMatrixStack.pushMatrix();
-					myEngine.mvMatrixStack.addTranslation({-5.f, i*20.f/10.f-10.f, 2.5f});
-					myEngine.mvMatrixStack.addHomothety({1.f,2.f,0.3});
-					myEngine.updateMvMatrix();
-					cube2->draw();
-					acier_gareTexture.detachTexture();
-					myEngine.activateTexturing(false);
-				myEngine.mvMatrixStack.popMatrix();
-			}
+			myEngine.mvMatrixStack.popMatrix();
+
+			//rembarde
+			myEngine.activateTexturing(true);
+			acier_gareTexture.attachTexture();
+			myEngine.mvMatrixStack.pushMatrix();
+
+				myEngine.mvMatrixStack.addTranslation({-5.f, i*20.f/10.f-10.f, 2.5f});
+				myEngine.mvMatrixStack.addHomothety({1.f,2.f,0.3});
+				myEngine.updateMvMatrix();
+				cube2->draw();
+				acier_gareTexture.detachTexture();
+				myEngine.activateTexturing(false);
+				
+			myEngine.mvMatrixStack.popMatrix();
+		}
 
 		//poteaux bois gauche
-			for (int i=0; i<=3; i++) {
-				 myEngine.setFlatColor( 0.631, 0.608, 0.569);
-				myEngine.mvMatrixStack.pushMatrix();
+		for (int i=0; i<=3; i++) {
+			myEngine.setFlatColor( 0.631, 0.608, 0.569);
+			myEngine.mvMatrixStack.pushMatrix();
 				myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,-10.f, 1.f});
 				myEngine.mvMatrixStack.addHomothety({0.5,0.5,3});
 				myEngine.updateMvMatrix();
 				cube2->draw();
-				myEngine.mvMatrixStack.popMatrix();
-
-				//rembarde
-				myEngine.activateTexturing(true);
-	 			acier_gareTexture.attachTexture();
-				myEngine.mvMatrixStack.pushMatrix();
-					myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,-10.f, 2.5f});
-					myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
-					myEngine.mvMatrixStack.addHomothety({1.f,2.f,0.3});
-					myEngine.updateMvMatrix();
-					cube2->draw();
-					acier_gareTexture.detachTexture();
-				myEngine.activateTexturing(false);
-				myEngine.mvMatrixStack.popMatrix();
-			}
-
-		//poteau bois droite
-			for (int i=0; i<=3; i++) {
-				 myEngine.setFlatColor( 0.631, 0.608, 0.569);
-				myEngine.mvMatrixStack.pushMatrix();
-					myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,10.f, 1.f});
-					myEngine.mvMatrixStack.addHomothety({0.5,0.5,3});
-					myEngine.updateMvMatrix();
-					cube2->draw();
-				myEngine.mvMatrixStack.popMatrix();
-
-				//rembarde
-				myEngine.activateTexturing(true);
-	 			acier_gareTexture.attachTexture();
-				myEngine.mvMatrixStack.pushMatrix();
-					myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,10.f, 2.5f});
-					myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
-					myEngine.mvMatrixStack.addHomothety({1.f,2.f,0.3});
-					myEngine.updateMvMatrix();
-					cube2->draw();
-					acier_gareTexture.detachTexture();
-				myEngine.activateTexturing(false);
-				myEngine.mvMatrixStack.popMatrix();
-
-			}
-			// Poteau toit droit
-			myEngine.mvMatrixStack.pushMatrix();
-				myEngine.mvMatrixStack.addTranslation({-4,-8.5f, 0});
-				myEngine.updateMvMatrix();
-				myEngine.activateTexturing(true);
-	 			bois_gareTexture.attachTexture();
-				drawToit();
 			myEngine.mvMatrixStack.popMatrix();
-			myEngine.updateMvMatrix();
 
-			// Poteau toit gauche
+			//rembarde
+			myEngine.activateTexturing(true);
+			acier_gareTexture.attachTexture();
 			myEngine.mvMatrixStack.pushMatrix();
-				myEngine.mvMatrixStack.addTranslation({-4,8.5f, 0});
-				myEngine.updateMvMatrix();
-				drawToit();
-			myEngine.mvMatrixStack.popMatrix();
-			myEngine.updateMvMatrix();
-			
-		//TOIT
-			myEngine.mvMatrixStack.pushMatrix();
-				myEngine.mvMatrixStack.addTranslation({-3,0,6.7f});
-				myEngine.mvMatrixStack.addRotation(-M_PI/15,{0,1,0});
-				myEngine.mvMatrixStack.addHomothety({5.f,20.f,0.4});
+				myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,-10.f, 2.5f});
+				myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
+				myEngine.mvMatrixStack.addHomothety({1.f,2.f,0.3});
 				myEngine.updateMvMatrix();
 				cube2->draw();
-				bois_gareTexture.detachTexture();
+				acier_gareTexture.detachTexture();
 			myEngine.activateTexturing(false);
-				myEngine.mvMatrixStack.popMatrix();
+			myEngine.mvMatrixStack.popMatrix();
+		}
+
+		//poteau bois droite
+		for (int i=0; i<=3; i++) {
+			myEngine.setFlatColor( 0.631, 0.608, 0.569);
+			myEngine.mvMatrixStack.pushMatrix();
+				myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,10.f, 1.f});
+				myEngine.mvMatrixStack.addHomothety({0.5,0.5,3});
 				myEngine.updateMvMatrix();
+				cube2->draw();
+			myEngine.mvMatrixStack.popMatrix();
+
+			//rembarde
+			myEngine.activateTexturing(true);
+			acier_gareTexture.attachTexture();
+			myEngine.mvMatrixStack.pushMatrix();
+				myEngine.mvMatrixStack.addTranslation({i*20.f/10.f-5.f,10.f, 2.5f});
+				myEngine.mvMatrixStack.addRotation(M_PI/2,{0,0,1});
+				myEngine.mvMatrixStack.addHomothety({1.f,2.f,0.3});
+				myEngine.updateMvMatrix();
+				cube2->draw();
+				acier_gareTexture.detachTexture();
+			myEngine.activateTexturing(false);
+			myEngine.mvMatrixStack.popMatrix();
+		}
+
+		// Poteau toit droit
+		myEngine.mvMatrixStack.pushMatrix();
+			myEngine.mvMatrixStack.addTranslation({-4,-8.5f, 0});
+			myEngine.updateMvMatrix();
+			myEngine.activateTexturing(true);
+			bois_gareTexture.attachTexture();
+			drawToit();
+		myEngine.mvMatrixStack.popMatrix();
+		myEngine.updateMvMatrix();
+
+		// Poteau toit gauche
+		myEngine.mvMatrixStack.pushMatrix();
+			myEngine.mvMatrixStack.addTranslation({-4,8.5f, 0});
+			myEngine.updateMvMatrix();
+			drawToit();
+		myEngine.mvMatrixStack.popMatrix();
+		myEngine.updateMvMatrix();
+			
+		//TOIT
+		myEngine.mvMatrixStack.pushMatrix();
+			myEngine.mvMatrixStack.addTranslation({-3,0,6.7f});
+			myEngine.mvMatrixStack.addRotation(-M_PI/15,{0,1,0});
+			myEngine.mvMatrixStack.addHomothety({5.f,20.f,0.4});
+			myEngine.updateMvMatrix();
+			cube2->draw();
+			bois_gareTexture.detachTexture();
+			myEngine.activateTexturing(false);
+		myEngine.mvMatrixStack.popMatrix();
+		myEngine.updateMvMatrix();
 
 		//PYRAMIDES TOIT
 		myEngine.setFlatColor(1, 1, 0.118);
 		myEngine.activateTexturing(true);
-	 	acier_gareTexture.attachTexture();
+		acier_gareTexture.attachTexture();
 		for (int i=0; i<=7; i++) {
-				myEngine.mvMatrixStack.pushMatrix();
-					myEngine.mvMatrixStack.addTranslation({-2.f, i*20.f/8.f-8.5f, 7.f});
-					myEngine.mvMatrixStack.addHomothety({1,1.5,0.8});
-					myEngine.updateMvMatrix();
-					pyramide->draw();
-					
-				myEngine.mvMatrixStack.popMatrix();
+			myEngine.mvMatrixStack.pushMatrix();
+				myEngine.mvMatrixStack.addTranslation({-2.f, i*20.f/8.f-8.5f, 7.f});
+				myEngine.mvMatrixStack.addHomothety({1,1.5,0.8});
 				myEngine.updateMvMatrix();
-			}
-			acier_gareTexture.detachTexture();
-			myEngine.activateTexturing(false);
+				pyramide->draw();
+				
+			myEngine.mvMatrixStack.popMatrix();
+			myEngine.updateMvMatrix();
+		}
+		acier_gareTexture.detachTexture();
+		myEngine.activateTexturing(false);
 
 		//STATUE 1
-			myEngine.activateTexturing(true);
-			rockTexture.attachTexture();
+		myEngine.activateTexturing(true);
+		rockTexture.attachTexture();
 		myEngine.mvMatrixStack.pushMatrix();
-					myEngine.mvMatrixStack.addTranslation({3.5f,8.7,0.5f});
-					myEngine.mvMatrixStack.addRotation(M_PI,{0,0,1});
-					myEngine.mvMatrixStack.addHomothety({0.9,0.9,0.9});
-					myEngine.updateMvMatrix();
-					drawStatue();
-					
-				myEngine.mvMatrixStack.popMatrix();
-				myEngine.updateMvMatrix();
+			myEngine.mvMatrixStack.addTranslation({3.5f,8.7,0.5f});
+			myEngine.mvMatrixStack.addRotation(M_PI,{0,0,1});
+			myEngine.mvMatrixStack.addHomothety({0.9,0.9,0.9});
+			myEngine.updateMvMatrix();
+			drawStatue();
+			
+		myEngine.mvMatrixStack.popMatrix();
+		myEngine.updateMvMatrix();
 		
 		//STATUE 2
-
 		myEngine.mvMatrixStack.pushMatrix();
-					myEngine.mvMatrixStack.addTranslation({3.5f,-8.7,0.5f});
-					myEngine.mvMatrixStack.addRotation(-M_PI,{0,0,1});
-					myEngine.mvMatrixStack.addHomothety({0.9,0.9,0.9});
-					myEngine.updateMvMatrix();
-					drawStatue();
-				rockTexture.detachTexture();
-				myEngine.activateTexturing(false);
-					
-				myEngine.mvMatrixStack.popMatrix();
-				myEngine.updateMvMatrix();
-		
+			myEngine.mvMatrixStack.addTranslation({3.5f,-8.7,0.5f});
+			myEngine.mvMatrixStack.addRotation(-M_PI,{0,0,1});
+			myEngine.mvMatrixStack.addHomothety({0.9,0.9,0.9});
+			myEngine.updateMvMatrix();
+			drawStatue();
+		rockTexture.detachTexture();
+		myEngine.activateTexturing(false);
+			
+		myEngine.mvMatrixStack.popMatrix();
+		myEngine.updateMvMatrix();
 
+		myEngine.mvMatrixStack.popMatrix();
+		myEngine.updateMvMatrix();
 
-	
+	myEngine.mvMatrixStack.popMatrix();
+	myEngine.updateMvMatrix();
  } 

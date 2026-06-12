@@ -6,7 +6,9 @@ enum Element {
     StraightRail,
     CurvedRail,
     Tree,
-    Cow
+    Cow,
+    Train,
+    Gare
 };
 
 struct SceneElement {

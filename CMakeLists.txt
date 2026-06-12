@@ -33,7 +33,7 @@ set(ALL_LIBRARIES ${ALL_LIBRARIES} glbasimac)
 include_directories(third_party/glbasimac/)
 set(CMAKE_COLOR_MAKEFILE ON)
 
-# ---Add nlohmann---
+# ---Add nlohmann & miniaudio---
 include_directories(third_party/)
 set(CMAKE_COLOR_MAKEFILE ON)
 

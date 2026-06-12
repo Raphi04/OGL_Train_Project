@@ -1,14 +1,5 @@
 #include "draw_scene.hpp"
 
-#include "engine/engine.hpp"
-
-#include "rails/rails.hpp"
-#include "terrain/terrain.hpp"
-#include "train/train.hpp"
-#include "gare/gare.hpp"
-
-#include "lumiere/lumiere.hpp"
-
 /* Initialisation des formes de la scèene */
 void initScene() {
 	// Initialiser les lumières
@@ -34,6 +25,11 @@ void initScene() {
 	initTrain();
 
 	initGare();
+
+	initCow();
+
+	/* Ajouter du son */
+	initSound();
 }
 
 /* Dessin de la scène */
@@ -49,13 +45,7 @@ void drawScene() {
 	/* Dessin de terrain */
 	drawTerrain();
 
-	// /*dDessin du train*/
-	drawTrain();
-	
-	//Dessin gare
-	drawGare();
-
-	/* Dessin de la grille du terrain*/
+	/* Dessin de la grille du terrain */
 	if(showTerrainGrid) {
 		drawTerrainGrid();
 	}
@@ -88,6 +78,18 @@ void drawScene() {
 
 				if(sceneElement.elementType == Element::CurvedRail) {
 					drawCurvedRails();
+				}
+
+				if(sceneElement.elementType == Element::Train) {
+					drawTrain();
+				}
+
+				if(sceneElement.elementType == Element::Gare) {
+					drawGare();
+				}
+
+				if(sceneElement.elementType == Element::Cow) {
+					drawCow();
 				}
 
 			myEngine.mvMatrixStack.popMatrix();

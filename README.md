@@ -72,6 +72,12 @@ Bouger la souris permet de déplacer la souris.
 
 L'appuie de cette touche permettra d'affciher ou de retirer la grille du terrain.
 
+---
+
+### **[K]** Klaxonner
+
+L'appuie de cette touche permettra de klaxonner.
+
 ## **Implémentation**
 
 ### Modification du CMakeLists
@@ -108,10 +114,10 @@ Cela me permet d'avoir un unique fichier **.cpp** reconnue comme executable.
 
 ---
 
-Ajout de nohlmann :
+Ajout de nohlmann et miniaudio :
 
 ```
-# ---Add nlohmann---
+# ---Add nlohmann & miniaudio---
 include_directories(third_party/)
 set(CMAKE_COLOR_MAKEFILE ON)
 ```
@@ -125,13 +131,13 @@ Pour ajouter des normals et des uvs maps au **GLBI_Convex_2D_Shape**, Nous avons
 Ajout des normals :
 
 ```
-        shape.addOneBuffer(1, 3, normals.data(), "Normals", false);
+shape.addOneBuffer(1, 3, normals.data(), "Normals", false);
 ```
 
 Ajout des uvs :
 
 ```
-		shape.addOneBuffer(2, 2, uvs.data(), "Uvs", true);
+shape.addOneBuffer(2, 2, uvs.data(), "Uvs", true);
 ```
 
 ## **Résultats**
@@ -151,9 +157,9 @@ Plafond :
 
 ---
 
-### Lumière
+### Lumières
 
-Nous avons mis 6 lumières dans tous les sens : haut, bas, gauche, droite, avant et arrière
+Nous avons mis 3 lumières : une en haut à droite et deux à l'avant du train
 
 Flat shading :
 ![Flat shading](./assets/documentation/flat.png)

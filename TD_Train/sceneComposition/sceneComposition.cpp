@@ -141,8 +141,48 @@ void getRails(std::vector<std::array<int, 2>> const& path ) {
     }
 }
 
+void getTrain(std::array<int, 2> trainPos){
+
+    for(SceneElement sceneElement : sceneComposition.sceneElements) {
+        if(sceneElement.x == trainPos[0] && sceneElement.y == trainPos[1]) {
+            if(sceneElement.elementType == Element::StraightRail) {
+                SceneElement train {};
+                train.x = trainPos[0];
+                train.y = trainPos[1];
+                train.elementType = Element::Train;
+                train.rotation = sceneElement.rotation;
+
+                sceneComposition.sceneElements.push_back(train);
+            }
+        }
+    }
+}
+
+void getGare(std::array<int, 3> garePos) {
+    if(checkIfEmpty(garePos[0], garePos[1])) {
+        SceneElement gare {};
+        gare.x = garePos[0];
+        gare.y = garePos[1];
+        gare.elementType = Element::Gare;
+        gare.rotation = garePos[2];
+
+        sceneComposition.sceneElements.push_back(gare);
+    }
+}
+
 void getTrees(){}
 
-void getCows(){}
+void getCows(std::vector<std::array<int, 3>> const& cows){
 
-void getSceneComposition(){}
+    for(std::array<int, 3> cowPos : cows) {
+        if(checkIfEmpty(cowPos[0], cowPos[1])) {
+            SceneElement cow {};
+            cow.x = cowPos[0];
+            cow.y = cowPos[1];
+            cow.elementType = Element::Cow;
+            cow.rotation = cowPos[2];
+    
+            sceneComposition.sceneElements.push_back(cow);
+        }
+    }
+}

@@ -21,6 +21,12 @@ void initJSONConfig(std::string const& json) {
 
 	getRails(inputJson.at("path").get<std::vector<std::array<int, 2>>>());
 
+	getTrain(inputJson.at("train").get<std::array<int, 2>>());
+
+	getGare(inputJson.at("gare").get<std::array<int, 3>>());
+
+	getCows(inputJson.at("cows").get<std::vector<std::array<int, 3>>>());
+
 	railParams = inputJson.at("railsParams").get<RailsParams>();
 }
 
