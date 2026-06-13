@@ -11,6 +11,10 @@ IndexedMesh* cube2;
 IndexedMesh* pyramide;
 StandardMesh* a_frame;
 
+
+
+
+
  void initGare(){
 	 createTexture();
 	
@@ -368,4 +372,6 @@ float uvs[] = {
 
 	myEngine.mvMatrixStack.popMatrix();
 	myEngine.updateMvMatrix();
+
+
  } 

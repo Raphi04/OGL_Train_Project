@@ -16,6 +16,7 @@ GLBI_Texture wood2Texture;
 GLBI_Texture glassTexture;
 GLBI_Texture rockTexture;
 GLBI_Texture grassTexture;
+GLBI_Texture cowTexture;
 
 void createTexture() {
     stbi_set_flip_vertically_on_load(true);
@@ -262,4 +263,26 @@ stbi_image_free(rock_texture);
 	grassTexture.loadImage(grassWidth, grassHeight, grassChannel, grass);
 
 	stbi_image_free(grass);
+
+	
+	
+
+
+	// COW
+    int cowWidth {};
+	int cowHeight {};
+	int cowChannel {};
+
+    unsigned char* cow { stbi_load("../TD_Train/texture/cow.png", &cowWidth, &cowHeight, &cowChannel, 0) };
+
+	if(cow == NULL) {
+		std::cout << "Le charchement de la texture cow à échoué" << std::endl;
+	}
+
+    cowTexture.createTexture();
+	cowTexture.attachTexture();
+	cowTexture.setParameters(GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	cowTexture.loadImage(cowWidth, cowHeight, cowChannel, cow);
+
+	stbi_image_free(cow);
 }
