@@ -16,6 +16,7 @@ GLBI_Texture wood2Texture;
 GLBI_Texture glassTexture;
 GLBI_Texture rockTexture;
 GLBI_Texture grassTexture;
+GLBI_Texture roueTexture;
 
 void createTexture() {
     stbi_set_flip_vertically_on_load(true);
@@ -262,4 +263,23 @@ stbi_image_free(rock_texture);
 	grassTexture.loadImage(grassWidth, grassHeight, grassChannel, grass);
 
 	stbi_image_free(grass);
+
+	//ROUE
+		
+    int roueWidth {};
+	int roueHeight {};
+	int roueChannel {};
+
+    unsigned char* roue { stbi_load("../TD_Train/texture/roue.png", &roueWidth, &roueHeight, &roueChannel, 0) };
+
+	if(roue == NULL) {
+		std::cout << "Le charchement de la texture roue à échoué" << std::endl;
+	}
+
+    roueTexture.createTexture();
+	roueTexture.attachTexture();
+	roueTexture.setParameters(GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	roueTexture.loadImage(roueWidth, roueHeight, roueChannel, roue);
+
+	stbi_image_free(roue);
 }

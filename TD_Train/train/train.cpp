@@ -289,7 +289,9 @@ myEngine.updateMvMatrix();
 //DROIT
 // ROUES GAUCHE
 
-myEngine.setFlatColor(0.42, 0.38, 0.357);
+//myEngine.setFlatColor(0.42, 0.38, 0.357);
+myEngine.activateTexturing(true);
+roueTexture.attachTexture();
 myEngine.mvMatrixStack.pushMatrix();
 myEngine.mvMatrixStack.addTranslation({-1.f,-1.f,0.f});
 	myEngine.mvMatrixStack.addHomothety({1.5f,2.f,2.f});
@@ -437,6 +439,8 @@ myEngine.mvMatrixStack.addTranslation({-7.f,0.f,0.f});
 			myEngine.mvMatrixStack.addRotation(M_PI/2,{0,1,0});
 			myEngine.updateMvMatrix();
 			disque.drawShape();
+			goldTexture.detachTexture();
+		myEngine.activateTexturing(false);
 		myEngine.mvMatrixStack.popMatrix();
 		myEngine.updateMvMatrix();
 
