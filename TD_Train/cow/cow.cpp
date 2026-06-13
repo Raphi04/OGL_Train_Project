@@ -29,11 +29,11 @@ void drawCow() {
     // Exercice 05 -> 02. | Rotation du balancier (incrémentation)
     if(flag_anim_rot_arm) {
         if(rotationArmIncreased) {
-            rotationArm = rotationArm + 0.01;
-			x_trans= x_trans-0.02;
+            rotationArm = rotationArm + 0.001;
+			x_trans= x_trans-0.002;
         } else {
-            rotationArm = rotationArm -0.01;
-			x_trans= x_trans+0.02;
+            rotationArm = rotationArm -0.001;
+			x_trans= x_trans+0.002;
         }
     }
 
