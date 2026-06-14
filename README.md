@@ -217,11 +217,9 @@ Comme pour le train, sa position dans la scène est configurable grâce au fichi
 
 Afin de rendre la scène plus vivante, plusieurs vaches ont été ajoutées dans le décor. Chaque vache est construite par assemblage de plusieurs **GLBI_Convex_2D_Shape**, avec ajout de textures.
 
-Comme pour le train, sa position dans la scène est configurable grâce au fichier **JSON**. Elle est inspirée de la gare de la locomotive des dieux de The Legend of Zelda: Spirit Tracks.
+Une animation de broutage a également été implémentée. Celle-ci repose sur une rotation périodique de la tête, accompagnée d'une légère translation permettant de rendre le mouvement plus naturel. Ces transformations sont calculées à chaque image en fonction du temps, ce qui crée une animation continue donnant l'impression que les vaches baissent puis relèvent la tête pour brouter.
 
-**Inspiration** :
+![Vache tête haute](./assets/documentation/cowup.png)
+![Vache tête haute](./assets/documentation/cowdown.png)
 
-![Gare de référence](./assets/documentation/gareref.png)
-
-**Rendu** :
-![Gare](./assets/documentation/gare.png)
+La position des différentes vaches est elle aussi paramétrable via le fichier **JSON**.
