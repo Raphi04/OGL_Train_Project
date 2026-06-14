@@ -182,3 +182,46 @@ Pour faire le terrain, nous avons fait un **GLBI_Convex_2D_Shape** sur lequel on
 Pour faire les rails, nous avons utilisé des **GLBI_Convex_2D_Shape** pour les parties métaliques. Les paramètres des rails peuvent être modifié dans le json.
 
 ![Rails](./assets/documentation/rails.png)
+
+---
+
+### Train
+
+La locomotive a été modélisée à partir d'un assemblage de plusieurs **GLBI_Convex_2D_Shape** et **IndexMesh**, sur lesquels différentes textures ont été appliquées afin de reproduire l'apparence de la locomotive des dieux de The Legend of Zelda: Spirit Tracks:
+
+![Train de référence](./assets/documentation/trainref.png)
+
+La position initiale du train peut être modifiée directement dans le fichier JSON.
+
+**Rendu** :
+![Train](./assets/documentation/train.png)
+
+---
+
+### Gare
+
+La gare a été réalisée à partir de plusieurs **GLBI_Convex_2D_Shape** et **IndexedMesh**, auxquels des textures ont été appliquées afin de représenter les différents matériaux du bâtiment.
+
+Comme pour le train, sa position dans la scène est configurable grâce au fichier **JSON**. Elle est inspirée de la gare de la locomotive des dieux de The Legend of Zelda: Spirit Tracks.
+
+**Inspiration** :
+
+![Gare de référence](./assets/documentation/gareref.png)
+
+**Rendu** :
+![Gare](./assets/documentation/gare.png)
+
+---
+
+### Vaches
+
+Afin de rendre la scène plus vivante, plusieurs vaches ont été ajoutées dans le décor. Chaque vache est construite par assemblage de plusieurs **GLBI_Convex_2D_Shape**, avec ajout de textures.
+
+Comme pour le train, sa position dans la scène est configurable grâce au fichier **JSON**. Elle est inspirée de la gare de la locomotive des dieux de The Legend of Zelda: Spirit Tracks.
+
+**Inspiration** :
+
+![Gare de référence](./assets/documentation/gareref.png)
+
+**Rendu** :
+![Gare](./assets/documentation/gare.png)
